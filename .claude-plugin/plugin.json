@@ -1,0 +1,7 @@
+{
+  "name": "codocu",
+  "description": "Keep code, plans, and docs coherent. Propose, implement, and fold changes through an explicit lifecycle.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "keywords": ["docs", "plans", "workflow", "sync", "spec"]
+}

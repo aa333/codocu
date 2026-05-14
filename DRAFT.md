@@ -100,7 +100,3 @@ Codocu does not care about exact structure of docs, so simple override file is p
 9. How to integrate specialist skills (qa,dev,architect,security) into this?
 10. Sync term is vague, in ospx it's always "sync plans into long-term docs". We may need to tighten up the defininitions here. 
 
-
-## Other 
-Varya's prompt:
-"это документ для людей, представь себе что ты вечно занятой разраб и тебе дали вот эту доку, ты сможешь из нее быстро понять что тут происходит и получить ответы на самые главные вопросы или ты ее бросишь на третьей странице из-за избыточности, дублирования и всего такого? перепиши так, чтобы разработчик сказал "спасибо, я все понял" а не "господи, что за жесть"
