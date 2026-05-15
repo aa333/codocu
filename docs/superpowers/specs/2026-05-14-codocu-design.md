@@ -13,6 +13,16 @@ Delivered as a Claude Code plugin (skills/commands), with the methodology spec a
 
 ---
 
+## Target User & Scope
+
+**Target user:** IT-first builders — solo developers, small technical teams, and technical entrepreneurs who want to ship maintainable software without drowning in process or doc overhead.
+
+**Scope:** Codocu operates at the single-project TRD level. Its area of responsibility is keeping a project's WHAT WAS / WHAT IS / WHAT WILL BE / WHY documented and coherent with its code.
+
+**Out of scope:** System-of-systems architecture, cross-team API contracts, OpenAPI specs, stakeholder PRDs, and infrastructure specifications. These may reference or be referenced by Codocu docs, but Codocu does not manage them.
+
+---
+
 ## Principles
 
 - Code is first-class documentation. Compilation, unit tests, and integration tests are the machine-verifiable layer of that spec.
@@ -55,9 +65,10 @@ Delivered as a Claude Code plugin (skills/commands), with the methodology spec a
 ### Long-term (conventions defined in `codocu.md`)
 
 **ActualDoc**
-- Evergreen project documentation. Might be per-module, might be per-slice or per-system, or even hybrid - users define that in codocu.md. 
+- Evergreen project documentation. Might be per-module, might be per-slice or per-system, or even hybrid - users define that in codocu.md.
 - Default location: `docs/actual/entityA.md`. Decomposable to `docs/actual/entityA/` for large modules.
 - Answers: in short, what is this? why is it like that? where is it going?
+- **What belongs here (not in code):** A decision, constraint, or design choice must be documented in ActualDoc if any of the following is true: (1) the reason is non-obvious from reading the code; (2) an alternative was considered and rejected; (3) an external constraint (regulatory, performance, organizational) drove the design; (4) the absence of something was a deliberate choice. If none apply, the code speaks for itself.
 
 **ArchivedPlan**
 - Completed plans moved to `docs/archive/`.
@@ -82,6 +93,24 @@ Defines for *this project*:
 
 The agent reads `codocu.md` at the start of every invocation. `codocu.md` is **not subject to sync tracking** — it defines the rules, it doesn't follow them.
 
+### Sync state marker
+
+The first non-heading line of `codocu.md` is a reserved sync state marker:
+
+```
+> Codocu sync state: Synced
+```
+
+Valid values: `Synced`, `Desynced`, `Dirty`. Every command that changes sync state updates this line before finishing. This gives any new session an instant orientation without replaying git history or re-probing code.
+
+**Update rules:**
+- `:propose` / `:doc-code` / `:apply`: set to `Dirty` at start, `Synced` at successful fold.
+- `:code-doc` (small delta): set to `Synced` on completion.
+- `:code-doc` (large/brownfield): set to `Dirty` at plan creation, `Synced` at successful fold.
+- `:fold`: set to `Synced` on completion.
+- Bare `/codocu`: set to `Dirty` at start of resolution, `Synced` at successful fold.
+- No command ever sets `Desynced` automatically — this value is set by the agent when it detects one side changed while the other is internally coherent, during state assessment at session start.
+
 Example fold config section (natural language — agent interprets):
 ```
 ## Fold settings
@@ -100,7 +129,7 @@ When folding incomplete plans, move unfinished items into tech-debt-todo.md by d
 | `/codocu:code-doc` | Case 3 | Code is truth → update docs. Small delta: auto-update, no plan. Large / brownfield: ProposalSummary → Plan → write docs → fold. |
 | `/codocu:apply` | — | Resume an existing plan (interrupted session, manually written plan). If multiple active plans: ask user which, offer "apply all in sequence". |
 | `/codocu:fold` (alias: `/codocu:sync`) | — | Archive completed plans. Suggest (not auto-trigger) at end of any flow that produced a plan. |
-| `/codocu` | Case 4 | FOOBAR / "I don't know what state I'm in." Read signals, ask per-area source-of-truth questions, produce a resolution plan before touching anything. |
+| `/codocu` | Case 4 | **Orient** — nominal flow for dirty or unknown state. Read git signals and existing artifacts, show what changed on each side, ask per-area source-of-truth questions, produce a resolution plan before touching anything. Expected during active development; not a failure state. |
 
 ---
 
@@ -136,7 +165,7 @@ code delta
     → large/brownfield: ProposalSummary (user approves) → doc Plan → write docs → [fold suggested]
 ```
 
-### Case 4 — FOOBAR (`/codocu`)
+### Case 4 — Orient (`/codocu`)
 
 ```
 read signals (git hint if available, active plans, codocu.md)
@@ -191,3 +220,15 @@ codocu.md          # meta-doc
 ```
 
 All paths configurable via `codocu.md`.
+
+---
+
+## Prior Art & Influences
+
+Codocu builds on established ideas — it does not claim to invent code-centric documentation:
+
+- **Literate Programming (Knuth, 1984):** The original attempt to unify code and prose. Codocu draws the opposite lesson: prose woven into code is too high-friction; instead, code stands alone and prose *supplements* it.
+- **Living Documentation (Cyrille Martraire, 2019):** The closest intellectual predecessor. Martraire's argument that documentation should evolve at the same pace as code, using the system itself as the primary knowledge source, directly informs Codocu's ActualDoc model.
+- **BDD / Executable Specifications (Cucumber, SpecFlow, ~2006–present):** Treats tests as the living spec. Codocu is composable with BDD/TDD — tests are the machine-verifiable layer of the code-as-spec, not a competing approach.
+- **OpenSpec (2024):** Direct workflow inspiration. Codocu adopts OpenSpec's propose→apply→archive lifecycle and reduces friction when switching between the two. Core divergence: OpenSpec treats code as a side-effect of specs; Codocu treats code as a co-equal source of truth.
+- **Spec-Driven Development (SDD, 2024–2025):** The broader category Codocu belongs to, now represented by Kiro (AWS), GitHub Spec Kit, BMAD, and others. Codocu's differentiator is lightweight bidirectional sync for small teams, not enterprise-grade structured artifact management.

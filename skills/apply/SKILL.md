@@ -11,6 +11,8 @@ Pick up where a plan left off.
 
 Read `codocu.md` from the project root. If `codocu.md` doesn't exist, suggest running `/codocu:init` first and stop.
 
+Update the sync state marker in `codocu.md`: find the line beginning with `> Codocu sync state:` and replace it with `> Codocu sync state: Dirty`. `/codocu:fold` will restore this to `Synced` when the plan is archived.
+
 ## Find the plan
 
 List all `.md` files in `docs/plans/`.

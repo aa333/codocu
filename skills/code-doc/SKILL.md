@@ -33,10 +33,15 @@ Judge the size and nature of the change:
 ## Small scope path
 
 Identify the ActualDocs that cover the changed area per `codocu.md` conventions.
+
+Apply the ActualDoc WHY heuristic when deciding what to document: write to ActualDoc if (1) the reason is non-obvious from reading the code, (2) an alternative was considered and rejected, (3) an external constraint drove the design, or (4) the absence of something was a deliberate choice. If none apply, the code speaks for itself — no doc update needed.
+
 Draft the updated doc sections. Show diffs to the user before writing:
 > "I'd update [file] with these changes: [diff]. Look right?"
 
-Write on approval. Done — no plan, no fold needed.
+Write on approval.
+
+Update the sync state marker in `codocu.md`: find the line beginning with `> Codocu sync state:` and replace it with `> Codocu sync state: Synced`. Done — no plan, no fold needed.
 
 ## Large / brownfield path
 
@@ -46,6 +51,8 @@ Draft a **ProposalSummary** in-conversation:
 - Which new docs to create
 
 Ask for approval. Iterate until approved.
+
+Update the sync state marker in `codocu.md`: find the line beginning with `> Codocu sync state:` and replace it with `> Codocu sync state: Dirty`. `/codocu:fold` will restore this to `Synced` when the plan is archived.
 
 Write a documentation plan to `docs/plans/YYYY-MM-DD-document-{area}.md`:
 ```markdown

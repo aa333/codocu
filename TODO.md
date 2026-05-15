@@ -9,13 +9,16 @@ Gather existing materials, articles, and frameworks around code as a living spec
 
 ---
 
-## V1 implementation notes
+## V1 todos
 
-**Sync state marker in `codocu.md`**
-A short status line at the top of `codocu.md` showing current sync state (Synced / Desynced / Dirty) and a one-liner summary. Updated by commands as they run. Useful for quick orientation in a new session.
+**Improve codocu.md**
+Iterate on template clarity. Add 2-3 template options, allow choosing during init with a short summary. Store with skill as files, just copy.
 
 **`:fold` is a no-op when no Plan exists**
 When `:code-doc` handles a small delta (auto-updates docs, no plan created), `:fold` has nothing to fold. Make this explicit in the `:fold` skill instructions to avoid user confusion.
+
+**`:fold` test suite check**
+Before archiving a plan, `:fold` should verify the test suite passes. If tests fail, block archiving and report which steps may be incomplete. Exact behavior on failure (warn-only vs. hard block) configurable in `codocu.md`. Implement and test against a real project before finalizing policy.
 
 ---
 
@@ -33,6 +36,9 @@ If the user renames folders, `codocu.md` paths go stale. No mechanism defined. C
 **ProposalSummary persistence for large brownfield `:code-doc`**
 ProposalSummary is ephemeral across all flows. For large brownfield documentation efforts the analysis may be worth keeping — as a Plan preamble or a separate artifact. Assess during first real brownfield use.
 
+**ProposalSummary persistence threshold**
+ProposalSummary is intentionally ephemeral. If a session grows long before a Plan is written (e.g., extended back-and-forth on scope), consider writing it to disk automatically once a conversation length threshold is crossed. Assess during real use — most proposals resolve to a Plan within a short session.
+
 **Richer git tooling**
 Current git advisory is binary (md-only / code-only / both). Real git tooling can read diff content, commit messages, and affected modules to make more accurate suggestions and avoid false positives from trivial changes.
 
@@ -40,7 +46,7 @@ Current git advisory is binary (md-only / code-only / both). Real git tooling ca
 Current sync detection is agent judgment only. Future options: git-based signals, `@synced-with` code comment markers, structured doc frontmatter. Only pursue if judgment proves insufficient in practice.
 
 **Specialist skill integration**
-Skills like `/specialist`, `/superpower`, `/goal` should be aware of Codocu conventions — not do Codocu's job, but follow basic requirements around doc format/placement and cross-linking, since they can bring the system into a desynced state just like a human can.
+Skills like `/specialist`, `/superpower`, `/goal` should be aware of Codocu conventions — not do Codocu's job, but follow basic requirements around doc format/placement and cross-linking, since they can (and should!) bring the system into a desynced state just like a human can.
 
 **`npx codocu` install script + NPM publishing**
 Installation script that bootstraps `codocu.md` and injects skill instructions for the target agent (Claude Code, etc.). Requires stable v1 plugin first.

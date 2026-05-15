@@ -12,6 +12,8 @@ The docs are the proposal. Write a plan and implement it.
 Read `codocu.md` from the project root. If `codocu.md` doesn't exist, suggest
 running `/codocu:init` first and stop.
 
+Update the sync state marker in `codocu.md`: find the line beginning with `> Codocu sync state:` and replace it with `> Codocu sync state: Dirty`. `/codocu:fold` will restore this to `Synced` when the plan is archived.
+
 ## Identify the docs delta
 
 Ask the user which docs they changed or are treating as the spec, if they haven't

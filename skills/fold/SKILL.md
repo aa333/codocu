@@ -65,7 +65,7 @@ If codocu.md has no fold settings, default to **Ask**.
 ### 3. Update docs
 
 Check whether the work covered by this plan requires ActualDoc updates per
-`codocu.md` conventions.
+`codocu.md` conventions. Apply the ActualDoc WHY heuristic: a decision must be documented if (1) the reason is non-obvious from reading the code, (2) an alternative was considered and rejected, (3) an external constraint drove the design, or (4) the absence of something was a deliberate choice. If none apply, the code speaks for itself — skip.
 
 - **Small or obvious update:** draft the change, show it to the user, write on approval.
 - **Larger update:** show a diff and ask for explicit approval before writing.

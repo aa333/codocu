@@ -37,6 +37,8 @@ resolution.
 
 If both code and docs have uncommitted changes AND there is no active plan in `docs/plans/`, this is a conflict that needs resolution. Or if the user says "things are a mess":
 
+Update the sync state marker in `codocu.md`: find the line beginning with `> Codocu sync state:` and replace it with `> Codocu sync state: Dirty`.
+
 Walk through the conflicts area by area:
 > "In [area], the docs say [X] and the code does [Y]. Which is the intended truth?"
 
