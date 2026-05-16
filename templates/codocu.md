@@ -1,6 +1,6 @@
 # Codocu
 
-> Codocu sync state: Synced
+> Codocu sync state: TBD
 
 ## Docs structure
 

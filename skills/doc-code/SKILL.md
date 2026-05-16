@@ -7,12 +7,14 @@ description: Docs describe the desired state — implement them in code. Use whe
 
 The docs are the proposal. Write a plan and implement it.
 
+_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics._
+
 ## Before starting
 
 Read `codocu.md` from the project root. If `codocu.md` doesn't exist, suggest
 running `/codocu:init` first and stop.
 
-Update the sync state marker in `codocu.md`: find the line beginning with `> Codocu sync state:` and replace it with `> Codocu sync state: Dirty`. `/codocu:fold` will restore this to `Synced` when the plan is archived.
+Set `codocu.md`'s state line to `> Codocu sync state: Dirty` for the duration of this work; `/codocu:fold` returns it to `Synced` when the plan is archived.
 
 ## Identify the docs delta
 

@@ -101,7 +101,7 @@ The first non-heading line of `codocu.md` is a reserved sync state marker:
 > Codocu sync state: Synced
 ```
 
-Valid values: `Synced`, `Desynced`, `Dirty`. Every command that changes sync state updates this line before finishing. This gives any new session an instant orientation without replaying git history or re-probing code.
+Valid values: `Synced`, `Desynced`, `Dirty`. `:init` seeds `TBD` in a fresh project (its real state is unknown until first assessed); the first command that establishes state replaces it. Every command that changes sync state updates this line before finishing. This gives any new session an instant orientation without replaying git history or re-probing code.
 
 **Update rules:**
 - `:propose` / `:doc-code` / `:apply`: set to `Dirty` at start, `Synced` at successful fold.

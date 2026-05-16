@@ -3,92 +3,69 @@ name: fold
 description: "Archive completed plans and sync any docs they touched. Also invokable as /codocu:sync. Run at the end of a feature or when you want to wrap up in-progress work."
 ---
 
-# Codocu Fold
+# Codocu — Fold
 
-Wrap up one or more plans: verify completion, update docs, archive.
+A plan's work is done (or being set down for now) and the record needs to
+catch up. Verify what shipped, bring the docs along, archive the plan. Also
+reachable as `/codocu:sync`.
 
-Also invokable as `/codocu:sync` — same behavior.
+_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics._
 
-## Before starting
+Read `codocu.md` first — it defines this project's doc layout and fold
+behavior, and it's authoritative. Whatever it says is the convention here;
+there's no "standard" to compare it against.
 
-Read `codocu.md` from the project root, especially the **Fold settings** section.
+## Which plan
 
-## Select a plan
+Look at the plans directory.
 
-List all `.md` files in `docs/plans/`.
+- Nothing there → there's nothing to fold; say so and stop.
+- One plan → name it, confirm it's the one to fold, proceed.
+- Several → list them with their goals, ask which; offer to walk all of them.
 
-- **None:** tell the user there's nothing to fold. Done.
-- **One found:** confirm with the user: "Found `{filename}`. Fold this plan?" Proceed on confirmation.
-- **Multiple:** list them with their goals. Ask which to fold.
-  Offer: "Go through all plans one by one?"
+## Verify it actually shipped
 
-## Per-plan process
+Don't trust the checkboxes. For each step the plan treats as done, confirm
+the change is really in the code. On this project in particular, plans have
+been executed without ticking boxes at all — so judge by code and git
+history, not by `[ ]`/`[x]`. If something marked done isn't there, surface
+it before going further — never paper over it:
 
-### 1. Sanity check
+> "The plan counts X as done but I don't see it in the code. Re-do it, drop
+> it, or skip?"
 
-Read the plan's steps. For each step marked done (`- [x]`), briefly verify the
-corresponding change actually exists in code. If a checked step appears not to be
-implemented, flag it:
-> "Step N is marked done but I can't find the corresponding change. Want to
-> re-implement it, uncheck it, or skip?"
+## Unfinished work
 
-Do not fail silently. Surface every discrepancy before proceeding.
+For steps that aren't done, `codocu.md`'s fold settings say how this project
+wants them handled — follow that. If it's silent, ask the user per item
+rather than guessing. The usual moves: move them into the project's tech-debt
+record, carve them into a fresh trimmed plan (same goal, only the remaining
+steps), or note them in the archive and leave them. Whichever applies, the
+mechanics are the project's convention from `codocu.md`, not a fixed recipe.
 
-### 2. Handle incomplete steps
+## Bring the docs along
 
-If there are unchecked steps (`- [ ]`):
+Update long-term docs only where the work genuinely warrants it. A decision
+earns a doc line when the reason isn't obvious from the code, an alternative
+was weighed and dropped, an external constraint forced it, or an absence was
+deliberate. If none of that applies, the code already says it — leave the
+docs alone. Small, clear updates: show the change, write it on approval.
+Larger ones: show the diff and get an explicit yes first.
 
-Read the **Fold settings** in `codocu.md` for the configured default. Apply it
-unless the user overrides. Options:
+## Archive and mark state
 
-- **Move to tech debt:** append each incomplete step to `docs/tech-debt-todo.md`
-  as a `TD-XXXX` item. Scan the file for the highest existing `TD-NNNN` number
-  and increment by 1. If no items exist yet, start at `TD-0001`.
-- **Create new plan:** write a new `docs/plans/YYYY-MM-DD-{topic}-continued.md`
-  with this format:
-  ```markdown
-  # {Original topic} (continued)
+Move the plan into the archive directory. Then set `codocu.md`'s state line:
 
-  **Goal:** {copy the Goal from the original plan}
+```
+> Codocu sync state: Synced
+```
 
-  **Context:** Remaining work from {original plan filename} — deprioritized during fold.
+A finished fold means this plan's work is verified and the docs it touched
+agree with the code. Other active plans describe intended future work — that
+is still Synced, not a desync. (Code mid-implementation that contradicts the
+docs is a different situation, surfaced by `/codocu` — not decided here.)
 
-  ## Steps
+## Close out
 
-  - [ ] {remaining incomplete steps from the original plan}
-  ```
-- **Ask:** present the options and let the user choose per item.
-- **Skip:** note the incomplete items in the archive but take no action.
-
-If codocu.md has no fold settings, default to **Ask**.
-
-### 3. Update docs
-
-Check whether the work covered by this plan requires ActualDoc updates per
-`codocu.md` conventions. Apply the ActualDoc WHY heuristic: a decision must be documented if (1) the reason is non-obvious from reading the code, (2) an alternative was considered and rejected, (3) an external constraint drove the design, or (4) the absence of something was a deliberate choice. If none apply, the code speaks for itself — skip.
-
-- **Small or obvious update:** draft the change, show it to the user, write on approval.
-- **Larger update:** show a diff and ask for explicit approval before writing.
-
-### 4. Archive
-
-Move the plan file from `docs/plans/` to `docs/archive/`.
-
-### 5. Update sync state marker
-
-After archiving, check whether `docs/plans/` is now empty.
-
-- **If empty:** Update the `codocu.md` status line to:
-  ```
-  > Codocu sync state: Synced
-  ```
-- **If plans still remain:** Leave the marker unchanged. The project is not fully
-  synced until all plans are folded.
-
-### 6. Report
-
-Tell the user:
-- Plan archived to `docs/archive/`
-- Any docs updated
-- Any tech debt items added or new plans created
-- Any discrepancies found in the sanity check
+Tell the user what landed: plan archived, docs updated, anything moved to
+tech debt or split into a new plan, and anything the verification turned up.

@@ -7,11 +7,13 @@ description: Resume or apply an existing plan. Use when returning to an interrup
 
 Pick up where a plan left off.
 
+_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics._
+
 ## Before starting
 
 Read `codocu.md` from the project root. If `codocu.md` doesn't exist, suggest running `/codocu:init` first and stop.
 
-Update the sync state marker in `codocu.md`: find the line beginning with `> Codocu sync state:` and replace it with `> Codocu sync state: Dirty`. `/codocu:fold` will restore this to `Synced` when the plan is archived.
+Set `codocu.md`'s state line to `> Codocu sync state: Dirty` for the duration of this work; `/codocu:fold` returns it to `Synced` when the plan is archived.
 
 ## Find the plan
 
@@ -24,8 +26,7 @@ List all `.md` files in `docs/plans/`.
 - **Multiple found:** list them with their goals (read the **Goal:** line from each).
   Ask which to apply. Offer: "Apply all in sequence?" as an option.
   When applying multiple plans in sequence: complete each plan fully before moving
-  to the next. If a step cannot be completed, stop and report to the user — do not
-  skip to the next plan.
+  to the next. If a step can't be completed, stop and report rather than skipping ahead.
 
 ## Apply the plan
 

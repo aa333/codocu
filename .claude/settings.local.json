@@ -2,7 +2,27 @@
   "permissions": {
     "allow": [
       "Bash(git *)",
-      "Bash(/c/Users/arzgi/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/brainstorming/scripts/start-server.sh *)"
+      "Bash(/c/Users/arzgi/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/brainstorming/scripts/start-server.sh *)",
+      "WebSearch",
+      "Skill(superpowers:brainstorming)",
+      "PowerShell(& 'C:\\\\repos\\\\codocu\\\\testing\\\\neph-state-guard.ps1' snapshot; Write-Host \"---\"; & 'C:\\\\repos\\\\codocu\\\\testing\\\\neph-state-guard.ps1' verify; Write-Host \"---EXIT $LASTEXITCODE---\")",
+      "PowerShell(& 'C:\\\\repos\\\\codocu\\\\testing\\\\neph-state-guard.ps1' snapshot; Write-Host \"--- now verify \\(must PASS, proves read-only\\) ---\"; & 'C:\\\\repos\\\\codocu\\\\testing\\\\neph-state-guard.ps1' verify; Write-Host \"EXIT=$LASTEXITCODE\"; Write-Host \"--- restore dry-run \\(must NOT change anything\\) ---\"; & 'C:\\\\repos\\\\codocu\\\\testing\\\\neph-state-guard.ps1' restore)",
+      "PowerShell(Test-Path *)",
+      "PowerShell(powershell -NoProfile -File C:\\\\repos\\\\codocu\\\\testing\\\\neph-state-guard.ps1 snapshot)",
+      "PowerShell(Set-Content *)",
+      "PowerShell(powershell -NoProfile -File C:\\\\repos\\\\codocu\\\\testing\\\\neph-state-guard.ps1 verify; Write-Host \"verify exit=$LASTEXITCODE\")",
+      "PowerShell(powershell -NoProfile -File C:\\\\repos\\\\codocu\\\\testing\\\\neph-state-guard.ps1 snapshot 2>$null | Select-String -Pattern 'Snapshot OK|tracked changes|untracked saved|stash sha')",
+      "WebFetch(domain:github.com)",
+      "Skill(superpowers:executing-plans)",
+      "Bash(powershell -NoProfile -File C:\\\\repos\\\\codocu\\\\testing\\\\neph-state-guard.ps1 snapshot)",
+      "PowerShell(& C:\\\\repos\\\\codocu\\\\testing\\\\neph-state-guard.ps1 snapshot)",
+      "Skill(update-config)",
+      "Bash",
+      "PowerShell",
+      "Bash(rm -f testing/transcripts/*)",
+      "Bash(rmdir testing/transcripts)",
+      "Bash(rm -rf testing/transcripts)",
+      "Skill(superpowers:writing-plans)"
     ]
   }
 }

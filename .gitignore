@@ -1,2 +1,4 @@
 .superpowers
 .claude/settings.local.json
+# state-guard.ps1 stores its local-only fixture snapshot next to the script
+testing/**/.snapshot/

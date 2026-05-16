@@ -7,6 +7,8 @@ description: Initialize Codocu in a project by creating codocu.md with sensible 
 
 Set up Codocu in the current project.
 
+_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics._
+
 ## Steps
 
 1. **Check for existing codocu.md.** If `codocu.md` exists at the project root, stop
@@ -18,7 +20,7 @@ Set up Codocu in the current project.
    ```markdown
    # Codocu
 
-   > Codocu sync state: Synced
+   > Codocu sync state: TBD
 
    ## Docs structure
 

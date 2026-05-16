@@ -7,16 +7,18 @@ description: Start a new feature or change from intent. Creates a plan after pro
 
 Turn a new intent into an approved plan, ready to implement.
 
+_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics._
+
 ## Before starting
 
 Read `codocu.md` from the project root. If it doesn't exist, suggest running
 `/codocu:init` first and stop.
 
-Update the sync state marker in `codocu.md`: find the line beginning with `> Codocu sync state:` and replace it with `> Codocu sync state: Dirty`. `/codocu:fold` will restore this to `Synced` when the plan is archived.
+Set `codocu.md`'s state line to `> Codocu sync state: Dirty` for the duration of this work; `/codocu:fold` returns it to `Synced` when the plan is archived.
 
 ## Dirty state warning
 
-Check these signals quickly — do NOT do a full project scan:
+A couple of quick signals — no full project scan:
 - `git status` if git is available: any uncommitted changes?
 - `docs/plans/`: any active plan files?
 
@@ -30,7 +32,7 @@ Do not block. If the user confirms, proceed.
 ## Proposal
 
 Ask the user what they want to build or change, if they haven't already said.
-Draft a **ProposalSummary** in the conversation — do NOT write it to disk:
+Draft a **ProposalSummary** in the conversation — it stays in the conversation, not on disk:
 
 - **Scope:** what is changing (modules, APIs, data, etc.)
 - **Affected areas:** files or systems likely to be touched

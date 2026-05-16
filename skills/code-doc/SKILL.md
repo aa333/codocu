@@ -7,6 +7,8 @@ description: Code is the source of truth — update docs to reflect it. Use afte
 
 Read what changed in code and bring the docs up to date.
 
+_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics._
+
 ## Before starting
 
 Read `codocu.md` from the project root for doc conventions (locations, format).
@@ -41,7 +43,7 @@ Draft the updated doc sections. Show diffs to the user before writing:
 
 Write on approval.
 
-Update the sync state marker in `codocu.md`: find the line beginning with `> Codocu sync state:` and replace it with `> Codocu sync state: Synced`. Done — no plan, no fold needed.
+Set `codocu.md`'s state line to `> Codocu sync state: Synced`. Done — no plan, no fold needed.
 
 ## Large / brownfield path
 
@@ -52,7 +54,7 @@ Draft a **ProposalSummary** in-conversation:
 
 Ask for approval. Iterate until approved.
 
-Update the sync state marker in `codocu.md`: find the line beginning with `> Codocu sync state:` and replace it with `> Codocu sync state: Dirty`. `/codocu:fold` will restore this to `Synced` when the plan is archived.
+Set `codocu.md`'s state line to `> Codocu sync state: Dirty` for the duration of this work; `/codocu:fold` returns it to `Synced` when the plan is archived.
 
 Write a documentation plan to `docs/plans/YYYY-MM-DD-document-{area}.md`:
 ```markdown

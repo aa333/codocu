@@ -3,67 +3,92 @@ name: codocu
 description: State-aware entry point. Use when things are out of sync, you're not sure what to do next, or both code and docs have changed. Reads signals and guides you to the right action.
 ---
 
-# Codocu Router
+# Codocu — Orient
 
-Figure out where things stand and what to do next.
+You own whether this project's code, plans, and docs tell the same story.
+Someone's unsure where things stand. Read the situation, say what you see, and
+recommend what you'd do — the way a senior who knows this codebase would.
 
-## Read signals
+_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics._
 
-Gather these quickly — no full project scan:
+## Get your bearings
 
-1. **`codocu.md`**: does it exist? If not, suggest `/codocu:init` and stop.
+Quick signals, not a full scan:
 
-2. **Active plans**: list files in `docs/plans/` — any in progress?
+- **`codocu.md`** — if it's there, it's authoritative; follow what it says
+  about doc layout and conventions without measuring it against any default.
+  If it's missing, the project isn't set up for Codocu yet. Normally you'd
+  offer either a read-only look or `/codocu:init` first — but if the request
+  already rules out creating files or running init, skip the offer and just
+  do the read-only look; that's what was asked.
+- **Active plans** — anything in the plans directory in progress?
+- **Working tree** — what's uncommitted, *and* what's untracked or newly
+  added. Git alone misses untracked refactors, so look past it.
 
-3. **Git** (if available): `git status` — what files have uncommitted changes?
-   - Only `.md` files → hint: docs are ahead, consider `:doc-code`
-   - Only code files → hint: code is ahead, consider `:code-doc`
-   - Both → check active plans first (see conflict section below)
+## Read-only orientation
 
-## Present findings
+When the ask is analysis-only — or `codocu.md` is absent and a read-only look
+is what's wanted — give a clear read and a recommended path. You leave every
+change to the user so they stay in control: nothing written, no `codocu.md`,
+no plan, no code, no docs.
 
-Tell the user what you found. Be concise:
-> "Here's what I see: [uncommitted code changes in X, Y] and [active plan: Z].
-> What would you like to do?"
+Work out which it is, and say why:
 
-If signals point clearly to one action (e.g. only code changed, no active plans),
-suggest it directly and ask for confirmation.
+- **Dirty** — both sides moved, or they contradict each other.
+- **Desynced** — one side moved; the other is internally coherent.
+- **Synced** — code and docs agree. Plans describing future work are still
+  Synced; future work isn't a desync.
 
-If there is an active plan and uncommitted code changes, that is normal mid-feature
-state — suggest `/codocu:apply` to continue the plan rather than entering conflict
-resolution.
+Then give a tight orientation brief (keep it in your reply — a deeper drill
+reuses it instead of re-deriving):
 
-## Case 4 — both sides changed (conflict)
+- **changed surface** — modified / added / deleted code and the key renames
+  (old→new), from git *and* untracked files;
+- **what the docs and plans claim** — homebrew docs, any spec/proposal
+  formats present, and plan/"done" status; call out anything that marks work
+  complete;
+- **where the two disagree** — area by area.
 
-If both code and docs have uncommitted changes AND there is no active plan in `docs/plans/`, this is a conflict that needs resolution. Or if the user says "things are a mess":
+## Recommend, don't enumerate
 
-Update the sync state marker in `codocu.md`: find the line beginning with `> Codocu sync state:` and replace it with `> Codocu sync state: Dirty`.
+Don't hand back a menu of opaque options. Say what you'd do and why, sized to
+what you actually found:
 
-Walk through the conflicts area by area:
-> "In [area], the docs say [X] and the code does [Y]. Which is the intended truth?"
+- **Simple one-sided desync** (docs lag code or vice-versa, the other side
+  coherent): recommend the direct fix — `/codocu:code-doc` or
+  `/codocu:doc-code` for that area — plainly.
+- **Active plan with matching in-progress code:** normal mid-feature state.
+  Recommend continuing it with `/codocu:apply`.
+- **Genuinely dirty and multi-area** (several areas diverge, sources of truth
+  unclear): a senior doesn't fix that ad hoc — they triage first. Recommend a
+  tiered reconciliation: establish the source of truth per area, then take one
+  area at a time — make it internally coherent, then bring its code and docs
+  together — and repeat. For the concrete shape, read
+  `references/reconciliation-plan.md` and fit it to this repo; it's a shape,
+  not a script, and it's overkill for anything simpler than a real
+  multi-area mess.
+- **Worth a deeper look but expensive:** offer the deep drill (below). Offer
+  it; don't run it.
 
-Record the user's answers. Once all areas are resolved, write a resolution plan:
+Whatever you land on, the next move is the user's — say what you'd do, then
+let them choose. If the project isn't initialized, note that `/codocu:init`
+is what persists state and unlocks the resolution flows, so it's usually the
+first step before anything else can stick.
 
-```markdown
-# Resolution Plan
+## The deep drill — offer, don't perform
 
-**Goal:** Bring code and docs into sync
+A file-level code-vs-docs reconciliation is genuinely expensive. Offer it
+when the divergence looks worth it, and say plainly that it's read-only and
+can be sizable. Run it **only** on an explicit accept — then read
+`references/deep-drill.md` and follow it. That gate is a real cost decision
+and it stays the user's to make.
 
-## Steps
+## Resolving a both-sides conflict
 
-- [ ] [area 1]: update [code/docs] to match [docs/code]
-- [ ] [area 2]: ...
-```
+When both code and docs have uncommitted changes, there's no active plan, and
+the user wants it sorted (or says it's a mess), that's a Case-4 conflict.
+Read `references/conflict-resolution.md` and follow it — only when actually
+resolving such a conflict.
 
-Save to `docs/plans/YYYY-MM-DD-resolution.md`.
-
-Implement per plan. Suggest `/codocu:fold` when done.
-
-## No conflicts — triage
-
-If no conflicts but user isn't sure what to do:
-
-- Active plan + uncommitted code changes → suggest `/codocu:apply` to continue the plan (this is normal mid-feature state, not a conflict)
-- Active plan exists → suggest `/codocu:apply` to continue it
-- No active plan, project is clean → suggest `/codocu:propose` for something new
-- No git → ask: "What changed recently? Docs, code, or both?"
+(References live in this skill's own directory — the base directory provided
+when the skill was invoked, not the working directory.)
