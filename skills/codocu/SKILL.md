@@ -46,7 +46,9 @@ reuses it instead of re-deriving):
   (old→new), from git *and* untracked files;
 - **what the docs and plans claim** — homebrew docs, any spec/proposal
   formats present, and plan/"done" status; call out anything that marks work
-  complete;
+  complete, and whether the long-term docs read as a coarse orientation map or
+  drift over the bound (re-telling code internals) or under it (no orientation
+  map at all);
 - **where the two disagree** — area by area.
 
 ## Recommend, don't enumerate

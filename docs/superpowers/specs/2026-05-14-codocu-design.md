@@ -28,7 +28,8 @@ Delivered as a Claude Code plugin (skills/commands), with the methodology spec a
 - Code is first-class documentation. Compilation, unit tests, and integration tests are the machine-verifiable layer of that spec.
 - LLM agents and experienced developers work better with focused, well-structured code than with bloated narrative docs. Both are agents — treat them accordingly.
 - Detailed natural-language plans (TRDs) are fleeting. They live only as long as the work is active, then get folded into the permanent record.
-- Long-term docs answer: *why is it like that, where is it going?*, as well as provide lean summary, not a full retelling of what the code already says.
+- **Long-term docs open with a coarse, drift-resistant *what*-summary** — an orientation map (purpose, system role, public contract, key external deps, direction) that lets a senior *or a non-technical reader* get their bearings without reading code. Bounded by an invariant, not a length: nothing an internal-only refactor would falsify belongs in it — that detail is the code's job.
+- **Beyond the summary, docs answer *why* and *where to*** — rationale and direction the code can't state for itself. Never a full re-telling of what the code already says.
 - Code and docs cross-link so that editing one nudges the agent toward updating the other.
 
 ---
@@ -67,8 +68,13 @@ Delivered as a Claude Code plugin (skills/commands), with the methodology spec a
 **ActualDoc**
 - Evergreen project documentation. Might be per-module, might be per-slice or per-system, or even hybrid - users define that in codocu.md.
 - Default location: `docs/actual/entityA.md`. Decomposable to `docs/actual/entityA/` for large modules.
-- Answers: in short, what is this? why is it like that? where is it going?
-- **What belongs here (not in code):** A decision, constraint, or design choice must be documented in ActualDoc if any of the following is true: (1) the reason is non-obvious from reading the code; (2) an alternative was considered and rejected; (3) an external constraint (regulatory, performance, organizational) drove the design; (4) the absence of something was a deliberate choice. If none apply, the code speaks for itself.
+- Answers, in three bounded parts: a **WHAT-summary**, then **WHY**, then a one-line **WHERE**.
+- **The WHAT-summary (opens every ActualDoc).** A coarse orientation map of *what* the entity is, bounded by an invariant — not a word count.
+  - **Names at most:** (1) the entity's purpose — what it is and the job it does; (2) its place in the system — what it talks to or depends on at the boundary; (3) its public contract — the capabilities/surface it offers consumers; (4) its direction — one line on where it's heading.
+  - **Governing test (drift invariant):** if an internal-only refactor that leaves the public surface unchanged would falsify a sentence, that sentence is too detailed — cut it; the code is its home. A correct WHAT-summary stays correct as long as purpose and public contract are unchanged.
+  - **Audience:** must read for a senior getting their bearings *and* a non-technical stakeholder — no per-function, per-field, algorithmic, or control-flow detail; no code unless a snippet *is* the contract.
+- **WHY — what belongs here (not in code):** A decision, constraint, or design choice must be documented in ActualDoc if any of the following is true: (1) the reason is non-obvious from reading the code; (2) an alternative was considered and rejected; (3) an external constraint (regulatory, performance, organizational) drove the design; (4) the absence of something was a deliberate choice. If none apply, the code speaks for itself.
+- **WHERE:** one line on direction — where this entity is heading.
 
 **ArchivedPlan**
 - Completed plans moved to `docs/archive/`.

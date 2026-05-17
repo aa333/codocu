@@ -3,6 +3,25 @@
 
 ## V1 todos
 
+**Spec A (long-term doc style) — implemented, unverified, uncommitted**
+`docs/superpowers/plans/2026-05-17-codocu-longterm-doc-style.md` tasks 1–3 + 5–8
+are done in the working tree: spec Principles split + ActualDoc WHAT/WHY/WHERE
+bound (`docs/superpowers/specs/2026-05-14-codocu-design.md`); in-voice
+WHAT-summary propagated into `fold`, `code-doc`, `codocu` orientation, and
+`skills/codocu/references/deep-drill.md`; `testing/2026-05-17-longterm-doc-style/`
+instrument created. Outstanding by owner decision:
+- Validation (plan Tasks 4 & 9) is consolidated into ONE combined Spec-A +
+  Spec-B harness run, after the Spec B plan is implemented. **Spec A behavior is
+  unverified until then.** Capture the baseline against the last commit *before*
+  the combined Spec-A/B commit.
+- Plan Task 10 (single commit) deferred; Spec A edits are uncommitted and will
+  be committed together with Spec B per the combined-test decision.
+- Spec B (Codocu onboarding model — router↔`:init`, `codocu.md` opinionated
+  generation, existing-docs stance) is the next brainstorming cycle; it builds
+  on Spec A's principle + heuristic. See
+  `docs/superpowers/specs/2026-05-17-codocu-longterm-doc-style-design.md`
+  ("Relation to other specs").
+
 **Improve codocu.md**
 Iterate on template clarity. Add 2-3 template options, allow choosing during init with a short summary. Store with skill as files, just copy.
 
@@ -16,48 +35,19 @@ Before archiving a plan, `:fold` should verify the test suite passes. If tests f
 No `.claude-plugin/marketplace.json` exists, so the plugin can only be loaded via `--plugin-dir`. Add a local marketplace manifest so the full `/plugin marketplace add` → `/plugin install codocu@<marketplace>` flow can be tested before publishing.
 
 **Usage feedback**
-see feedback-transcript.md
+- Still a little bit rough on the edges around "I didnt write anything!" in the proposal stage. Should be giving "this is a quick proposal, take a quick look, discuss and I'll make a plan" 
+```
+The drill itself wrote nothing — no files, no codocu.md, no plan on disk. To persist this plan and wire Codocu around your existing OpenSpec + docs/systems/docs/plans/tech-debt.md layout, the next step is /codocu:init — but that's a separate, explicitly-gated action. Say the word and I'll walk it; otherwise this stands as your read.
+```
+- codocu analysis router declined saving a plan until codocu.md is initialized. I'd rather allow users to get progressive adoption.
+- codocu: init listed as separate, gated - as a user, I've no idea what that means. We need simpler terms and we need router to be able to soft-init codocu.
+- and init skill itself should guide me throug several steps, like long-term documentation level (module/system/whatever), do I need techdebt, how do I want to fold incomplete plans. I think that's better than template. In this case skill can ask questions and propose variants based on existing docs and repo state, but sensible defaults should lean towards codocu principles  
 
 **Revisit how codocu treats CLAUDE.md and how it wires codocu.md into it**
 CLAUDE.md right now reiterates a lot of paths which are already defined in codocu, and we have to edit them in 2 places. Let's just encourage a single reference from CLAUDE.md
 
-**Strengthen the public-API field-rename check (deep-drill.md §5)**
-The ProfileData `status_label`→`member_status_str` / `status`→`member_status`
-rename was missed in iter-01, iter-02, AND iter-03 — the §5 deterministic
-check was added specifically to close this and still did not fire. The
-changed-surface anchor reconciles modules but isn't enumerating renamed public
-fields from diffs in practice. Next iteration: make §5 a hard, explicit
-per-changed-API-object field enumeration step with a worked example, not a
-prose instruction.
+**Apply Varya's prompt**
 
-**Bare-assent behavioral cliff in the plan-gated drill**
-iter-03 worst-case ("Yes, do the drill.") correctly disclosed cost + presented
-the triaged plan but **withheld even the cheap changed-surface findings** —
-the claimed-complete≠done divergence appeared only as an unexecuted plan step.
-The slightly richer MAIN prompt ("perform that deeper drill-down now") DID
-surface it. So there's a cliff: minimal assent loses the priority finding.
-Consider revising deep-drill.md so the always-bound, already-cheap
-changed-surface reconciliation is reported even on bare assent, gating only the
-heavier per-tier audit behind a second go-ahead. Retest both prompts.
-
-**Reconcile the deep-drill plan with the reorganized `testing/` layout, then fold it**
-`docs/superpowers/plans/2026-05-16-codocu-deep-drill-cost-redesign.md` is
-substantively implemented in `skills/codocu/` (lean `SKILL.md` +
-`references/deep-drill.md` + `references/conflict-resolution.md`, plus the
-template and spec edits). Outstanding:
-- Task 6 references stale paths (`testing/neph-state-guard.ps1`,
-  `testing/report-template.md`, `testing/report-iter-03.md`,
-  `testing/transcripts/iter-03.*`, `testing/session-test-dirty-orientation-01.md`).
-  The harness was reorganized to `testing/tools/state-guard.ps1` +
-  `testing/tools/report-template.md`, and the iter-03-equivalent runs now live
-  under `testing/2026-05-16-dirty-repo-exploration/` (run1–3 + worstcase,
-  `summary.md`). Update Task 6's paths to the new layout / `testing/README.md`
-  conventions and confirm the suite covers Task 6's intent.
-- Then do Task 7 (single commit + `test-iter-03` tag) and `/codocu:fold` the plan.
-- The new `testing/tools/`, `testing/README.md`, and
-  `testing/2026-05-16-dirty-repo-exploration/` are untracked and need committing;
-  the old `testing/` paths show as deletions until the rename is staged.
----
 
 ## V2 / Future
 

@@ -45,6 +45,12 @@ mechanics are the project's convention from `codocu.md`, not a fixed recipe.
 
 ## Bring the docs along
 
+When the work touches an area whose doc exists or is now warranted, that doc
+opens with a coarse orientation map — what the thing is, its place in the
+system, its public contract, where it's heading — and nothing an internal-only
+refactor would falsify; that detail is the code's job. Keep that opening
+honest as you go.
+
 Update long-term docs only where the work genuinely warrants it. A decision
 earns a doc line when the reason isn't obvious from the code, an alternative
 was weighed and dropped, an external constraint forced it, or an absence was

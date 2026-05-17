@@ -36,7 +36,7 @@ Judge the size and nature of the change:
 
 Identify the ActualDocs that cover the changed area per `codocu.md` conventions.
 
-Apply the ActualDoc WHY heuristic when deciding what to document: write to ActualDoc if (1) the reason is non-obvious from reading the code, (2) an alternative was considered and rejected, (3) an external constraint drove the design, or (4) the absence of something was a deliberate choice. If none apply, the code speaks for itself — no doc update needed.
+Any ActualDoc you write or update opens with a coarse orientation map — the area's purpose, its place in the system, its public contract, where it's heading — bounded so nothing an internal-only refactor would falsify lands in it; that detail is the code's job. On top of that, apply the ActualDoc WHY heuristic when deciding what rationale to document: write to ActualDoc if (1) the reason is non-obvious from reading the code, (2) an alternative was considered and rejected, (3) an external constraint drove the design, or (4) the absence of something was a deliberate choice. If none apply, the code speaks for itself — no doc update needed.
 
 Draft the updated doc sections. Show diffs to the user before writing:
 > "I'd update [file] with these changes: [diff]. Look right?"
@@ -51,6 +51,11 @@ Draft a **ProposalSummary** in-conversation:
 - What to document (areas, modules)
 - Which existing docs to update
 - Which new docs to create
+
+Each doc opens with a coarse orientation map — purpose, place in the system,
+public contract, direction — bounded so nothing an internal-only refactor
+would falsify lands in it; the WHY heuristic governs what rationale earns a
+line on top of that.
 
 Ask for approval. Iterate until approved.
 

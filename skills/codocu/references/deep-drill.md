@@ -52,7 +52,10 @@ Two anchors, strongest bound first:
 1. **Changed-surface (always).** For each changed/new code module and each
    public API object it defines, reconcile it against any doc that references
    that module or identifier. This is the universal bound and works with zero
-   plans.
+   plans. Also judge the doc itself against the WHAT-summary bound: a doc that
+   re-tells code internals is over the bound; one with no coarse orientation
+   map (purpose, place, public contract, direction) is under it — report
+   either as a distinct divergence.
 2. **Completion-claim (when present — a sharpening).** *On top of* the
    changed-surface, for each **active** plan/spec/prose that asserts
    completion (`[x]` **or** "done/complete/shipped/archived"), check whether
