@@ -30,6 +30,7 @@ Delivered as a Claude Code plugin (skills/commands), with the methodology spec a
 - Detailed natural-language plans (TRDs) are fleeting. They live only as long as the work is active, then get folded into the permanent record.
 - **Long-term docs open with a coarse, drift-resistant *what*-summary** — an orientation map (purpose, system role, public contract, key external deps, direction) that lets a senior *or a non-technical reader* get their bearings without reading code. Bounded by an invariant, not a length: nothing an internal-only refactor would falsify belongs in it — that detail is the code's job.
 - **Beyond the summary, docs answer *why* and *where to*** — rationale and direction the code can't state for itself. Never a full re-telling of what the code already says.
+- **Every doc, plan, and brief is written for a perpetually busy reader** — human or agent; attention is the scarcest resource. Lead with the answer, say each thing once, cut whatever restates the code or earns no decision. Orthogonal to the WHAT-summary bound: that governs *what content belongs*; this governs *whether it reads without exhausting the reader*. The defect is wasted attention, never length itself.
 - Code and docs cross-link so that editing one nudges the agent toward updating the other.
 
 ---

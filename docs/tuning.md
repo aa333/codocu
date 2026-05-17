@@ -44,6 +44,45 @@ How prominently orientation reaches for the tiered reconciliation plan.
   `skills/codocu/references/reconciliation-plan.md`; orientation then
   recommends only per-area direct fixes.
 
+### Existing-docs stance authority
+Whether the onboarding existing-docs stance may weaken the WHAT-summary bound
+for a project, or is purely a rollout strategy.
+- **Setting:** Option 1 — rollout-only (the stance controls scope/timing
+  only; the WHAT-summary bound stays invariant; onboarding never offers to
+  soften or disable it).
+- **Expressed in:** `skills/codocu/references/onboarding.md` §6 — the final
+  "The standard itself stays invariant under every stance" paragraph.
+- **Strengthen (Option 2 — softenable):** rewrite §6's final paragraph so the
+  stance may, when chosen, dial the WHAT-summary bound down/off for the
+  project's legacy docs, recorded in `codocu.md`'s existing-docs note.
+- **Devalue / remove:** not applicable — Option 1 is the floor; there is no
+  setting weaker than rollout-only.
+
+### Reader economy
+How hard the skills push every doc/plan/brief to read well for a busy reader
+(lead with the answer, say it once, no bloat) vs. leaving prose quality to
+chance. Orthogonal to the WHAT-summary bound — that governs scope; this
+governs the read.
+- **Setting:** On — internalized in the shared house-rule voice; live
+  orientation/deep-drill flags reader-economy defects in existing docs as a
+  finding distinct from the scope finding; one holistic reader-experience row
+  (assessor + writer) in the test rubric.
+- **Expressed in:** the shared `_Operate as the engineer…_` house-rule line in
+  every `skills/*/SKILL.md` that carries it (`codocu`, `fold`, `propose`,
+  `code-doc`, `doc-code`, `apply`); `skills/propose/SKILL.md` and
+  `skills/doc-code/SKILL.md` (plan-for-a-reviewer clause);
+  `skills/code-doc/SKILL.md` (small + brownfield paths) and
+  `skills/fold/SKILL.md` ("Bring the docs along"); `skills/codocu/SKILL.md`
+  orientation brief and `skills/codocu/references/deep-drill.md` anchor 1
+  (live finding); `testing/2026-05-17-longterm-doc-style/
+  report-template-whatsummary.md` (Reader-experience row).
+- **Strengthen:** sharpen the house-rule clause toward an explicit cut-test;
+  widen the live orientation finding.
+- **Devalue:** soften the live finding to writer-side only; keep the
+  house-rule clause regardless — internalized economy is never undesirable.
+- **Remove:** drop the house-rule clause and the rubric row; orientation then
+  judges only the WHAT-summary scope bound.
+
 ## Adding a dial
 When a new behavioral knob emerges, add a section here with: setting,
 expressed-in locations, and the strengthen/devalue/remove directions — then

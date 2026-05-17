@@ -9,7 +9,7 @@ You own whether this project's code, plans, and docs tell the same story.
 Someone's unsure where things stand. Read the situation, say what you see, and
 recommend what you'd do — the way a senior who knows this codebase would.
 
-_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics._
+_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a perpetually busy reader — lead with the answer, say each thing once, cut whatever restates the code; they should come away "I get it," not "what a mess."_
 
 ## Get your bearings
 
@@ -17,10 +17,11 @@ Quick signals, not a full scan:
 
 - **`codocu.md`** — if it's there, it's authoritative; follow what it says
   about doc layout and conventions without measuring it against any default.
-  If it's missing, the project isn't set up for Codocu yet. Normally you'd
-  offer either a read-only look or `/codocu:init` first — but if the request
-  already rules out creating files or running init, skip the offer and just
-  do the read-only look; that's what was asked.
+  If it's missing, the project isn't set up for Codocu yet — offer either a
+  read-only look or to set it up now (the onboarding branch below; this is
+  the soft-init). If the request already rules out creating files or running
+  setup, skip the offer and just do the read-only look; that's what was
+  asked.
 - **Active plans** — anything in the plans directory in progress?
 - **Working tree** — what's uncommitted, *and* what's untracked or newly
   added. Git alone misses untracked refactors, so look past it.
@@ -46,9 +47,11 @@ reuses it instead of re-deriving):
   (old→new), from git *and* untracked files;
 - **what the docs and plans claim** — homebrew docs, any spec/proposal
   formats present, and plan/"done" status; call out anything that marks work
-  complete, and whether the long-term docs read as a coarse orientation map or
+  complete, whether the long-term docs read as a coarse orientation map or
   drift over the bound (re-telling code internals) or under it (no orientation
-  map at all);
+  map at all), and — a separate axis — whether they're a kind read or
+  something a busy developer would abandon: redundant, duplicated, the answer
+  buried;
 - **where the two disagree** — area by area.
 
 ## Recommend, don't enumerate
@@ -73,9 +76,20 @@ what you actually found:
   it; don't run it.
 
 Whatever you land on, the next move is the user's — say what you'd do, then
-let them choose. If the project isn't initialized, note that `/codocu:init`
-is what persists state and unlocks the resolution flows, so it's usually the
-first step before anything else can stick.
+let them choose. If the project isn't initialized, setting it up is what
+persists state and unlocks the resolution flows, so it's usually the first
+step — flow into onboarding inline when the user wants to proceed, not as a
+separate gated command.
+
+## Onboarding — set up or revise conventions
+
+When the project isn't set up (no `codocu.md`) and the user wants to
+proceed, or they explicitly asked to set Codocu up (`/codocu:init`), or they
+want to revise existing conventions — that's onboarding. It writes
+`codocu.md`, so it runs **only on an explicit go-ahead**; until then
+orientation stays read-only. An existing `codocu.md` is never overwritten —
+onboarding offers to revise it. Read `references/onboarding.md` and follow it
+— only when actually onboarding.
 
 ## The deep drill — offer, don't perform
 

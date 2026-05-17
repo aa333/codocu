@@ -55,7 +55,9 @@ Two anchors, strongest bound first:
    plans. Also judge the doc itself against the WHAT-summary bound: a doc that
    re-tells code internals is over the bound; one with no coarse orientation
    map (purpose, place, public contract, direction) is under it — report
-   either as a distinct divergence.
+   either as a distinct divergence. Separately from scope, judge the read: a
+   doc a busy developer would abandon — redundant, duplicated, the answer
+   buried — is its own distinct divergence, not folded into the scope finding.
 2. **Completion-claim (when present — a sharpening).** *On top of* the
    changed-surface, for each **active** plan/spec/prose that asserts
    completion (`[x]` **or** "done/complete/shipped/archived"), check whether

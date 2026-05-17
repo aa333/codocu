@@ -10,7 +10,7 @@
 
 **Spec:** `docs/superpowers/specs/2026-05-17-codocu-longterm-doc-style-design.md`
 
-> **Execution status (2026-05-17).** Tasks 1–3 and 5–8 are complete and verified inline (spec Principles split + ActualDoc WHAT/WHY/WHERE bound; in-voice WHAT-summary propagated into `fold`, `code-doc`, `codocu` orientation, `deep-drill.md`; validation instrument created). **Validation (Tasks 4 & 9) was NOT run** — by owner decision it is consolidated into a single combined Spec-A + Spec-B harness run after the Spec B plan is implemented; **Spec A behavior is unverified until then.** **Task 10 (commit) is not done** — Spec A edits sit uncommitted in the working tree; the single commit is deferred and taken together with Spec B per the combined-test decision (still gated on an explicit ask). Step checkboxes below are intentionally left unticked per this repo's standing dogfooding deviation (`:fold`/`:apply` verify by code + git, never by `[ ]`/`[x]`).
+> **Execution status (2026-05-17).** Tasks 1–3 and 5–8 are complete and verified inline (spec Principles split + ActualDoc WHAT/WHY/WHERE bound; in-voice WHAT-summary propagated into `fold`, `code-doc`, `codocu` orientation, `deep-drill.md`; validation instrument created). **Validation (Tasks 4 & 9) was NOT run** — by owner decision it is consolidated into a single combined Spec-A + Spec-B harness run after the Spec B plan is implemented; **Spec A behavior is unverified until then.** **Task 10 (commit) is not done** — Spec A edits sit uncommitted in the working tree; the single commit is deferred and taken together with Spec B per the combined-test decision (still gated on an explicit ask). Step checkboxes below are all ticked at the owner's request to close the plan out for tracking; per this repo's standing dogfooding deviation they are **not evidence of verification** — the combined Spec-A+B harness run did not execute and nothing is committed. Verify by code + git, never by `[ ]`/`[x]`.
 
 > **COMMIT POLICY — read before executing.** This repo's `CLAUDE.md` mandates: *"No intermediate commits. Make one commit per logical unit of work, at the end. Do not commit unless asked."* This **overrides** the writing-plans default of per-task commits. There are intentionally **no per-task commit steps** below. A single commit covering all of Spec A happens in the final task, **only when the user explicitly asks**. Do not `git commit` between tasks.
 
@@ -31,7 +31,7 @@ Every skill edit in Tasks 5–8 must read as the senior-partner voice already in
 **Files:**
 - Modify: `docs/superpowers/specs/2026-05-14-codocu-design.md` (Principles section, the long-term-docs bullet)
 
-- [ ] **Step 1: Replace the defective Principle bullet with two**
+- [x] **Step 1: Replace the defective Principle bullet with two**
 
 Find this exact line:
 
@@ -46,7 +46,7 @@ Replace with:
 - **Beyond the summary, docs answer *why* and *where to*** — rationale and direction the code can't state for itself. Never a full re-telling of what the code already says.
 ```
 
-- [ ] **Step 2: Verify in context**
+- [x] **Step 2: Verify in context**
 
 Read the Principles section (`docs/superpowers/specs/2026-05-14-codocu-design.md`, the `## Principles` block). Confirm: there are now six bullets; the four sound ones (code first-class, agents-over-bloat, fleeting plans, cross-linking) are untouched; the two new bullets read in the section's terse voice; no "lean summary, not a full retelling" phrasing remains. Fix inline if not.
 
@@ -57,7 +57,7 @@ Read the Principles section (`docs/superpowers/specs/2026-05-14-codocu-design.md
 **Files:**
 - Modify: `docs/superpowers/specs/2026-05-14-codocu-design.md` (Artifacts › Long-term › ActualDoc)
 
-- [ ] **Step 1: Replace the Answers/WHY lines with the bounded three-part block**
+- [x] **Step 1: Replace the Answers/WHY lines with the bounded three-part block**
 
 In the `**ActualDoc**` entry, find these exact two list items:
 
@@ -78,7 +78,7 @@ Replace with:
 - **WHERE:** one line on direction — where this entity is heading.
 ```
 
-- [ ] **Step 2: Verify the WHY heuristic survived verbatim and the block is consistent**
+- [x] **Step 2: Verify the WHY heuristic survived verbatim and the block is consistent**
 
 Read the `**ActualDoc**` entry. Confirm: the four numbered WHY conditions are byte-identical to the original (only the label changed to "WHY — what belongs here"); the WHAT-summary's four-part anchor + drift test + audience match the spec's Design §2 exactly; nothing in the Artifacts section now contradicts the corrected Principles (Task 1). Fix inline if not.
 
@@ -92,7 +92,7 @@ Create the scoring instrument *before* editing any skill, so the post-edit behav
 - Create: `testing/2026-05-17-longterm-doc-style/setup.md`
 - Create: `testing/2026-05-17-longterm-doc-style/report-template-whatsummary.md`
 
-- [ ] **Step 1: Create the suite setup file**
+- [x] **Step 1: Create the suite setup file**
 
 Create `testing/2026-05-17-longterm-doc-style/setup.md` with this exact content:
 
@@ -135,7 +135,7 @@ Score from the transcript in a separate session against
 this setup as `run<N>/setup-changes.md`, per `testing/README.md` conventions.
 ```
 
-- [ ] **Step 2: Create the extended report template**
+- [x] **Step 2: Create the extended report template**
 
 Create `testing/2026-05-17-longterm-doc-style/report-template-whatsummary.md` with this exact content:
 
@@ -208,24 +208,24 @@ Proves the instrument discriminates (test-first: the new criteria must fail befo
 - Create: `testing/2026-05-17-longterm-doc-style/run1/result.md`
 - Create: `testing/2026-05-17-longterm-doc-style/run1/setup-changes.md`
 
-- [ ] **Step 1: Snapshot the fixture (read-only)**
+- [x] **Step 1: Snapshot the fixture (read-only)**
 
 Run: `pwsh testing/tools/state-guard.ps1 snapshot -Repo <target-repo>`
 Expected: `Snapshot OK` (72 tracked, 22 untracked).
 
-- [ ] **Step 2: Run current orientation headless**
+- [x] **Step 2: Run current orientation headless**
 
 Fresh session, cwd = `<target-repo>`: `claude --model opus --plugin-dir <codocu-repo>`.
 Paste the verbatim read-only prompt from `testing/2026-05-16-dirty-repo-exploration/setup.md` §"Per-iteration runbook" step 3.
 Capture full assistant output to `testing/2026-05-17-longterm-doc-style/run1/transcript.md`.
 Write `run1/setup-changes.md` = "baseline: skills + spec unchanged (pre-Spec-A), plugin state <git-sha>; assessor run".
 
-- [ ] **Step 3: Verify read-only**
+- [x] **Step 3: Verify read-only**
 
 Run: `pwsh testing/tools/state-guard.ps1 verify -Repo <target-repo>`
 Expected: `VERIFY PASS`. On `VERIFY FAIL`: record the defect, run `pwsh testing/tools/state-guard.ps1 restore -Repo <target-repo> -Execute`, treat the run as void and re-run after the cause is fixed.
 
-- [ ] **Step 4: Score in a SEPARATE session (no self-grading)**
+- [x] **Step 4: Score in a SEPARATE session (no self-grading)**
 
 In a different session, score `run1/transcript.md` against `testing/2026-05-17-longterm-doc-style/report-template-whatsummary.md`; save as `run1/result.md` (Run type: assessor; Skill state: baseline).
 Expected: functional + voice criteria PASS; **WHAT-summary assessor criteria FAIL** (current skills have no WHAT bound, so the agent does not flag the OpenSpec specs as *over the WHAT-summary bound* nor name the bound — at most a generic "docs are messy"). If the WHAT-summary criteria do *not* fail, the instrument is too lenient — tighten the pass conditions in `report-template-whatsummary.md` (require the bound be named explicitly) and re-score before proceeding.
@@ -237,7 +237,7 @@ Expected: functional + voice criteria PASS; **WHAT-summary assessor criteria FAI
 **Files:**
 - Modify: `skills/fold/SKILL.md` ("## Bring the docs along" section)
 
-- [ ] **Step 1: Add the WHAT-summary clause ahead of the WHY paragraph**
+- [x] **Step 1: Add the WHAT-summary clause ahead of the WHY paragraph**
 
 Find this exact section:
 
@@ -271,7 +271,7 @@ docs alone. Small, clear updates: show the change, write it on approval.
 Larger ones: show the diff and get an explicit yes first.
 ```
 
-- [ ] **Step 2: Verify**
+- [x] **Step 2: Verify**
 
 Read `skills/fold/SKILL.md`. Confirm: the WHY paragraph is unchanged; the new WHAT-summary paragraph is one in-voice clause (no numbered checklist, no internal step numbers, no "per the skill"); the unconditional-`Synced` and no-trust-checkboxes semantics elsewhere in the file are untouched. Fix inline if not.
 
@@ -282,7 +282,7 @@ Read `skills/fold/SKILL.md`. Confirm: the WHY paragraph is unchanged; the new WH
 **Files:**
 - Modify: `skills/code-doc/SKILL.md` ("## Small scope path" and "## Large / brownfield path")
 
-- [ ] **Step 1: Add the WHAT-summary anchor to the small-scope WHY paragraph**
+- [x] **Step 1: Add the WHAT-summary anchor to the small-scope WHY paragraph**
 
 Find this exact paragraph:
 
@@ -296,7 +296,7 @@ Replace with:
 Any ActualDoc you write or update opens with a coarse orientation map — the area's purpose, its place in the system, its public contract, where it's heading — bounded so nothing an internal-only refactor would falsify lands in it; that detail is the code's job. On top of that, apply the ActualDoc WHY heuristic when deciding what rationale to document: write to ActualDoc if (1) the reason is non-obvious from reading the code, (2) an alternative was considered and rejected, (3) an external constraint drove the design, or (4) the absence of something was a deliberate choice. If none apply, the code speaks for itself — no doc update needed.
 ```
 
-- [ ] **Step 2: Add the WHAT-summary clause to the large/brownfield path**
+- [x] **Step 2: Add the WHAT-summary clause to the large/brownfield path**
 
 Find this exact block:
 
@@ -325,7 +325,7 @@ line on top of that.
 Ask for approval. Iterate until approved.
 ```
 
-- [ ] **Step 3: Verify**
+- [x] **Step 3: Verify**
 
 Read `skills/code-doc/SKILL.md`. Confirm: both edits present; the four WHY conditions are unchanged in the small path; the sync-state-line phrasing and flow elsewhere are untouched; both added clauses are in-voice (no recited numbered checklist in user-facing prose). Fix inline if not.
 
@@ -336,7 +336,7 @@ Read `skills/code-doc/SKILL.md`. Confirm: both edits present; the four WHY condi
 **Files:**
 - Modify: `skills/codocu/SKILL.md` (the orientation-brief bullet list)
 
-- [ ] **Step 1: Extend the "what the docs and plans claim" bullet**
+- [x] **Step 1: Extend the "what the docs and plans claim" bullet**
 
 Find this exact bullet:
 
@@ -356,7 +356,7 @@ Replace with:
   map at all);
 ```
 
-- [ ] **Step 2: Verify**
+- [x] **Step 2: Verify**
 
 Read `skills/codocu/SKILL.md`. Confirm: only that bullet changed; the read-only orientation guarantee, the deep-drill opt-in gate, the pre-emptive-prompt skip, and the generic (no OpenSpec-hardcoded) detection are all intact; the added clause is in-voice. Fix inline if not.
 
@@ -367,7 +367,7 @@ Read `skills/codocu/SKILL.md`. Confirm: only that bullet changed; the read-only 
 **Files:**
 - Modify: `skills/codocu/references/deep-drill.md` (§4 Anchors, anchor 1)
 
-- [ ] **Step 1: Add doc-adequacy-against-the-bound to the changed-surface anchor**
+- [x] **Step 1: Add doc-adequacy-against-the-bound to the changed-surface anchor**
 
 Find this exact item:
 
@@ -390,7 +390,7 @@ Replace with:
    either as a distinct divergence.
 ```
 
-- [ ] **Step 2: Verify**
+- [x] **Step 2: Verify**
 
 Read `skills/codocu/references/deep-drill.md`. Confirm: only anchor 1 changed; the read-only contract, the tier table, the cost-disclosure gate, and the deterministic field-rename check (§5) are untouched; no OpenSpec-specific hardcoding introduced. Fix inline if not.
 
@@ -407,23 +407,23 @@ Read `skills/codocu/references/deep-drill.md`. Confirm: only anchor 1 changed; t
 - Create: `testing/2026-05-17-longterm-doc-style/run3/setup-changes.md`
 - Create: `testing/2026-05-17-longterm-doc-style/summary.md`
 
-- [ ] **Step 1: Assessor re-run — snapshot**
+- [x] **Step 1: Assessor re-run — snapshot**
 
 Run: `pwsh testing/tools/state-guard.ps1 snapshot -Repo <target-repo>`
 Expected: `Snapshot OK` (72 tracked, 22 untracked).
 
-- [ ] **Step 2: Assessor re-run — run + verify read-only**
+- [x] **Step 2: Assessor re-run — run + verify read-only**
 
 Fresh session, cwd = `<target-repo>`: `claude --model opus --plugin-dir <codocu-repo>`. Paste the same verbatim read-only prompt as Task 4 Step 2. Capture to `run2/transcript.md`. Write `run2/setup-changes.md` = "full Spec-A propagation in place (Tasks 1–2 spec + Tasks 5–8 skills); assessor run".
 Then run: `pwsh testing/tools/state-guard.ps1 verify -Repo <target-repo>`
 Expected: `VERIFY PASS`. On FAIL: record defect, `restore … -Execute`, fix the offending skill (the leak/over-eager write is the defect), re-run.
 
-- [ ] **Step 3: Assessor re-run — score in a SEPARATE session**
+- [x] **Step 3: Assessor re-run — score in a SEPARATE session**
 
 Score `run2/transcript.md` against `report-template-whatsummary.md`; save as `run2/result.md` (Run type: assessor; Skill state: full-propagation).
 Expected: **all functional criteria PASS (no regression vs Task 4 baseline)**, **voice non-regression PASS**, AND **WHAT-summary assessor criteria PASS** (over-bound flagged on the OpenSpec specs with the bound named; under-bound flagged on a map-less homebrew doc). If any functional/voice criterion regressed or a WHAT-summary criterion failed: revise the offending skill edit (Tasks 5–8) per `run2/result.md` "Change for next run" and repeat Steps 1–3 with a new run folder.
 
-- [ ] **Step 4: Writer-side scenario — build the disposable scratch repo**
+- [x] **Step 4: Writer-side scenario — build the disposable scratch repo**
 
 Create a throwaway directory `<scratch>` (outside `<target-repo>` and `<codocu-repo>`; e.g. a temp dir). Create exactly these files:
 
@@ -468,19 +468,19 @@ password)` internally calls `_issue_token` and `logout(token)` calls
 `_revoke`. The cache is a plain dict keyed by user id.
 ```
 
-- [ ] **Step 5: Writer-side scenario — run `code-doc` headless**
+- [x] **Step 5: Writer-side scenario — run `code-doc` headless**
 
 Fresh session, cwd = `<scratch>`: `claude --model opus --plugin-dir <codocu-repo>`.
 Prompt (paste verbatim):
 > `/codocu:code-doc I renamed nothing public but refactored TokenStore internals; bring docs/actual/auth.md up to date with the code.`
 Capture full assistant output (and the resulting `<scratch>/docs/actual/auth.md`) to `run3/transcript.md`. Write `run3/setup-changes.md` = "writer-side scenario in disposable <scratch>; full Spec-A propagation in place". No state-guard here (scratch is disposable, not the protected fixture).
 
-- [ ] **Step 6: Writer-side scenario — score in a SEPARATE session**
+- [x] **Step 6: Writer-side scenario — score in a SEPARATE session**
 
 Score `run3/transcript.md` (including the rewritten `auth.md`) against `report-template-whatsummary.md`; save as `run3/result.md` (Run type: writer; Skill state: full-propagation).
 Expected: **Writer: anchor honored PASS** (the rewritten `auth.md` opens with purpose / place / public contract `login`/`logout` / direction only) and **Writer: drift test passes PASS** (no mention of `TokenStore`, `_cache`, `_recompute`, `_issue_token`, `_revoke`, or "dict keyed by user id" — all internal-only, exactly the detail an internal refactor falsifies). Voice non-regression PASS. If it fails, revise the `code-doc` edit (Task 6) per `run3/result.md` and repeat Steps 4–6. Delete `<scratch>` when done.
 
-- [ ] **Step 7: No-regression / locked-constraint guard**
+- [x] **Step 7: No-regression / locked-constraint guard**
 
 Manually inspect the final files and record PASS/FAIL with file:line evidence in `run2/result.md` under "Defects / observations":
 1. `docs/superpowers/specs/2026-05-14-codocu-design.md` — the four WHY conditions are byte-identical to pre-Spec-A; six Principles; WHAT block matches spec §2.
@@ -490,7 +490,7 @@ Manually inspect the final files and record PASS/FAIL with file:line evidence in
 5. No `tuning.md`, `codocu.md`, `first_draft.md`, router/`:init`, or voice-redesign-artifact changes were made (Spec A scope boundary).
 Any FAIL → fix the offending file and repeat the relevant validation steps.
 
-- [ ] **Step 8: Write the suite scoreboard**
+- [x] **Step 8: Write the suite scoreboard**
 
 Create `testing/2026-05-17-longterm-doc-style/summary.md`: a status-log table (run, plugin state, run type, functional, voice, WHAT-summary, read-only, headline) across run1 (assessor baseline — WHAT-summary FAIL expected), run2 (assessor full-propagation), run3 (writer), plus a short narrative and any open findings. Follow the shape of `testing/2026-05-16-dirty-repo-exploration/summary.md`.
 
@@ -503,7 +503,7 @@ Per `CLAUDE.md`, this is the single commit for the whole Spec A logical unit. **
 **Files:**
 - (commit only; no new edits)
 
-- [ ] **Step 1: Confirm scope, then commit once**
+- [x] **Step 1: Confirm scope, then commit once**
 
 Stage exactly Spec A's deliverables: `docs/superpowers/specs/2026-05-17-codocu-longterm-doc-style-design.md` (already written), `docs/superpowers/specs/2026-05-14-codocu-design.md` (Tasks 1–2), `skills/fold/SKILL.md`, `skills/code-doc/SKILL.md`, `skills/codocu/SKILL.md`, `skills/codocu/references/deep-drill.md` (Tasks 5–8), `docs/superpowers/plans/2026-05-17-codocu-longterm-doc-style.md` (this plan), and the new `testing/2026-05-17-longterm-doc-style/` suite. Do **not** stage unfolded voice-redesign artifacts or any Spec B / out-of-scope file. Commit with a message summarizing "Spec A: long-term doc-style — WHAT-summary principle + bound + in-voice skill propagation". Use the repo's commit trailer convention. Do not push unless asked. Suggest `/codocu:fold` afterward to archive this plan.
 

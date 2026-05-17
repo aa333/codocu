@@ -46,6 +46,25 @@ Concrete writer PASS example: "Auth module — verifies credentials for the API
 layer; depends on the token store; exposes `login`/`logout`; moving to
 refresh-token rotation next."
 
+## Reader-experience score (new — Spec C; orthogonal to WHAT-summary)
+
+Holistic, scored separate-session. NOT a writer gate — an observation, like
+the WHAT-summary assessor rows. Reader economy is a different axis than scope:
+an in-bound doc can still be an exhausting read.
+
+| Metric | Pass condition | Got | Note |
+|---|---|---|---|
+| Assessor: bad read flagged | flags an existing doc a busy developer would abandon — redundancy, duplication, padding, answer buried — as a finding **distinct from** the WHAT-summary scope finding, not collapsed into a generic "docs are messy" |  |  |
+| Writer: reads answer-first | a doc/plan/brief the agent produced leads with the answer, says each thing once, no padding a busy reader would resent |  |  |
+| Voice non-regression | the added reader-economy clauses read in-voice — no scaffolding leak, no recited checklist (reuses the voice rubric) |  |  |
+
+Concrete assessor FAIL example: "the docs are messy and out of sync" (generic;
+no reader-economy axis named). Concrete assessor PASS example: "beyond scope,
+`auth.md` explains the token flow in three places and buries the one fact
+you'd come here for — a busy dev would bail." Concrete writer FAIL example: a
+brief that restates every step before answering. Concrete writer PASS example:
+a close-out that states the outcome first, then the detail, once.
+
 ## Defects / observations
 
 -

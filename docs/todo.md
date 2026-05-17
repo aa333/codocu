@@ -3,27 +3,23 @@
 
 ## V1 todos
 
-**Spec A (long-term doc style) — implemented, unverified, uncommitted**
-`docs/superpowers/plans/2026-05-17-codocu-longterm-doc-style.md` tasks 1–3 + 5–8
-are done in the working tree: spec Principles split + ActualDoc WHAT/WHY/WHERE
-bound (`docs/superpowers/specs/2026-05-14-codocu-design.md`); in-voice
-WHAT-summary propagated into `fold`, `code-doc`, `codocu` orientation, and
-`skills/codocu/references/deep-drill.md`; `testing/2026-05-17-longterm-doc-style/`
-instrument created. Outstanding by owner decision:
-- Validation (plan Tasks 4 & 9) is consolidated into ONE combined Spec-A +
-  Spec-B harness run, after the Spec B plan is implemented. **Spec A behavior is
-  unverified until then.** Capture the baseline against the last commit *before*
-  the combined Spec-A/B commit.
-- Plan Task 10 (single commit) deferred; Spec A edits are uncommitted and will
-  be committed together with Spec B per the combined-test decision.
-- Spec B (Codocu onboarding model — router↔`:init`, `codocu.md` opinionated
-  generation, existing-docs stance) is the next brainstorming cycle; it builds
-  on Spec A's principle + heuristic. See
-  `docs/superpowers/specs/2026-05-17-codocu-longterm-doc-style-design.md`
-  ("Relation to other specs").
-
-**Improve codocu.md**
-Iterate on template clarity. Add 2-3 template options, allow choosing during init with a short summary. Store with skill as files, just copy.
+**Specs A + B + C (long-term docs + onboarding + reader economy) — implemented, unverified, uncommitted**
+Spec A (`docs/superpowers/plans/2026-05-17-codocu-longterm-doc-style.md`,
+tasks 1–3 + 5–8), Spec B
+(`docs/superpowers/plans/2026-05-17-codocu-onboarding-model.md`, tasks 1–7),
+and Spec C (`docs/superpowers/plans/2026-05-17-codocu-reader-economy.md`,
+tasks 1–5; "Apply Varya's prompt")
+are done in the working tree. Outstanding by owner decision:
+- ONE combined harness run validates all three (Spec A assessor baseline+pass +
+  writer scenario; Spec B onboarding scenarios; Spec C reader-experience
+  dimension — baseline shows current skills neither flag reader-economy
+  defects in the fixture docs nor produce reader-economical output, post-run
+  shows both with voice non-regression; no-regression / locked-constraint
+  guard; combined summary). **All three specs are unverified until then.**
+  Capture the baseline against the last commit *before* the combined commit
+  (currently HEAD `3e8c098`).
+- ONE combined commit lands all three as separable logical units, only on an
+  explicit ask.
 
 **`:fold` is a no-op when no Plan exists**
 When `:code-doc` handles a small delta (auto-updates docs, no plan created), `:fold` has nothing to fold. Make this explicit in the `:fold` skill instructions to avoid user confusion.
@@ -34,19 +30,11 @@ Before archiving a plan, `:fold` should verify the test suite passes. If tests f
 **`marketplace.json` and/or npx script for install/distribution testing**
 No `.claude-plugin/marketplace.json` exists, so the plugin can only be loaded via `--plugin-dir`. Add a local marketplace manifest so the full `/plugin marketplace add` → `/plugin install codocu@<marketplace>` flow can be tested before publishing.
 
-**Usage feedback**
-- Still a little bit rough on the edges around "I didnt write anything!" in the proposal stage. Should be giving "this is a quick proposal, take a quick look, discuss and I'll make a plan" 
-```
-The drill itself wrote nothing — no files, no codocu.md, no plan on disk. To persist this plan and wire Codocu around your existing OpenSpec + docs/systems/docs/plans/tech-debt.md layout, the next step is /codocu:init — but that's a separate, explicitly-gated action. Say the word and I'll walk it; otherwise this stands as your read.
-```
-- codocu analysis router declined saving a plan until codocu.md is initialized. I'd rather allow users to get progressive adoption.
-- codocu: init listed as separate, gated - as a user, I've no idea what that means. We need simpler terms and we need router to be able to soft-init codocu.
-- and init skill itself should guide me throug several steps, like long-term documentation level (module/system/whatever), do I need techdebt, how do I want to fold incomplete plans. I think that's better than template. In this case skill can ask questions and propose variants based on existing docs and repo state, but sensible defaults should lean towards codocu principles  
-
-**Revisit how codocu treats CLAUDE.md and how it wires codocu.md into it**
-CLAUDE.md right now reiterates a lot of paths which are already defined in codocu, and we have to edit them in 2 places. Let's just encourage a single reference from CLAUDE.md
-
-**Apply Varya's prompt**
+**Apply Varya's prompt** — spec + plan written
+(`docs/superpowers/specs/2026-05-17-codocu-reader-economy-design.md`,
+`docs/superpowers/plans/2026-05-17-codocu-reader-economy.md`); implemented
+in-tree, unverified/uncommitted, folded into the combined A+B+C run +
+separable commit.
 
 
 ## V2 / Future

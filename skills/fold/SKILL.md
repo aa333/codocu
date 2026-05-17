@@ -9,7 +9,7 @@ A plan's work is done (or being set down for now) and the record needs to
 catch up. Verify what shipped, bring the docs along, archive the plan. Also
 reachable as `/codocu:sync`.
 
-_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics._
+_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a perpetually busy reader — lead with the answer, say each thing once, cut whatever restates the code; they should come away "I get it," not "what a mess."_
 
 Read `codocu.md` first — it defines this project's doc layout and fold
 behavior, and it's authoritative. Whatever it says is the convention here;
@@ -49,7 +49,8 @@ When the work touches an area whose doc exists or is now warranted, that doc
 opens with a coarse orientation map — what the thing is, its place in the
 system, its public contract, where it's heading — and nothing an internal-only
 refactor would falsify; that detail is the code's job. Keep that opening
-honest as you go.
+honest as you go — and readable: a doc a busy person abandons half-read has
+failed, however accurate.
 
 Update long-term docs only where the work genuinely warrants it. A decision
 earns a doc line when the reason isn't obvious from the code, an alternative

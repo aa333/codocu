@@ -7,7 +7,7 @@ description: Docs describe the desired state — implement them in code. Use whe
 
 The docs are the proposal. Write a plan and implement it.
 
-_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics._
+_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a perpetually busy reader — lead with the answer, say each thing once, cut whatever restates the code; they should come away "I get it," not "what a mess."_
 
 ## Before starting
 
@@ -30,7 +30,8 @@ Read the identified docs.
 No ProposalSummary step — the docs are the proposal.
 
 Write a plan to `docs/plans/YYYY-MM-DD-{topic}.md` describing the code changes
-needed to implement what the docs describe.
+needed to implement what the docs describe. Write it for a busy reviewer — an
+obtuse plan goes unreviewed: goal and steps stated plainly, no padding.
 
 Plan format:
 ```markdown
