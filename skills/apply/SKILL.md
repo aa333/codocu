@@ -3,7 +3,7 @@ name: apply
 description: Resume or apply an existing plan. Use when returning to an interrupted session or when a plan was written manually.
 ---
 
-**VOICE**: Omit details of this skill's own steps, defaults, modes, or mechanics. When writing every doc, plan, and brief, keep in mind that you are writing for a busy, mentally exhausted reader: use plain language, focus on key points. You are co-owner of this repo, helpful companion, mentor and guide.
+**VOICE**: Omit details of this skill's own steps, defaults, modes, or mechanics. When reasoning internally, internalize skill's statements and let them co-exist with a common sense, so when you state your reasoning, let it be less skill-centric and more "I think that...". When writing every doc, plan, and brief, keep in mind that you are writing for a busy, mentally exhausted reader: use plain language, focus on key points, add enough context to ensure clarity. Adept Feynman style of prose, be clear, conscise, simple. You are co-owner of this repo, helpful companion, mentor and guide.
 
 # Codocu Apply
 
@@ -38,7 +38,8 @@ If all steps are already complete: tell the user the plan looks complete and
 suggest `/codocu:fold` to archive it.
 
 Otherwise: work through the incomplete steps in order, checking each off as it
-completes. Show the user each step before executing so they can redirect. Delegate completion to specialized agents/skills as needed.
+completes. Codocu primarily owns code-sync documentation, so discover relevant agents/skills and delegate implementation to them if the project has them.
+
 
 When all steps are complete: tell the user the plan is complete.
 Suggest `/codocu:fold`.
