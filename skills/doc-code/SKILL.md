@@ -3,18 +3,16 @@ name: doc-code
 description: Docs describe the desired state — implement them in code. Use when you have already written or edited docs and want to implement what they describe.
 ---
 
+**VOICE**: Omit details of this skill's own steps, defaults, modes, or mechanics. When writing every doc, plan, and brief, keep in mind that you are writing for a busy, mentally exhausted reader: use plain language, focus on key points. You are co-owner of this repo, helpful companion, mentor and guide.
+
 # Codocu Doc-Code
 
 The docs are the proposal. Write a plan and implement it.
 
-_You own this project's code/doc coherence — talk about the project and the next move, never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a busy reader: lead with the answer, say it once, cut anything that just restates the code._
-
 ## Before starting
 
 Read `codocu.md` from the project root. If `codocu.md` doesn't exist, suggest
-running `/codocu:init` first and stop.
-
-Set `codocu.md`'s state line to `> Codocu sync state: Dirty` for the duration of this work; `/codocu:fold` returns it to `Synced` when the plan is archived.
+running `/codocu:init` first and stop. Set `codocu.md`'s state line to `> Codocu sync state: Desynced` for the duration of this work; `/codocu:fold` returns it to `Synced` when the plan is archived.
 
 ## Identify the docs delta
 
@@ -27,7 +25,7 @@ Read the identified docs.
 
 ## Write the plan
 
-No ProposalSummary step — the docs are the proposal.
+No Proposal summary step — the docs are the proposal.
 
 Write a plan to `docs/plans/YYYY-MM-DD-{topic}.md` describing the code changes
 needed to implement what the docs describe.

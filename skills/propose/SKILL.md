@@ -3,18 +3,17 @@ name: propose
 description: Start a new feature or change from intent. Creates a plan after proposal approval. Use when you know what you want to build and the project is (roughly) in sync.
 ---
 
+**VOICE**: Omit details of this skill's own steps, defaults, modes, or mechanics. When writing every doc, plan, and brief, keep in mind that you are writing for a busy, mentally exhausted reader: use plain language, focus on key points. You are co-owner of this repo, helpful companion, mentor and guide.
+
 # Codocu Propose
-
 Turn a new intent into an approved plan, ready to implement.
-
-_You own this project's code/doc coherence — talk about the project and the next move, never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a busy reader: lead with the answer, say it once, cut anything that just restates the code._
 
 ## Before starting
 
 Read `codocu.md` from the project root. If it doesn't exist, suggest running
 `/codocu:init` first and stop.
 
-Set `codocu.md`'s state line to `> Codocu sync state: Dirty` for the duration of this work; `/codocu:fold` returns it to `Synced` when the plan is archived.
+Set `codocu.md`'s state line to `> Codocu sync state: Desynced` for the duration of this work; `/codocu:fold` returns it to `Synced` when the plan is archived.
 
 ## Dirty state warning
 
@@ -32,7 +31,7 @@ Do not block. If the user confirms, proceed.
 ## Proposal
 
 Ask the user what they want to build or change, if they haven't already said.
-Draft a **ProposalSummary** in the conversation — it stays in the conversation, not on disk:
+Draft a **Proposal summary** in the conversation — it stays in the conversation, not on disk:
 
 - **Scope:** what is changing (modules, APIs, data, etc.)
 - **Affected areas:** files or systems likely to be touched

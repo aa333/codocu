@@ -55,8 +55,13 @@ principle with no forced moment of checking decays; this is that moment.
 
 ## Commit policy
 
-No intermediate commits. Make one commit per logical unit of work, at the end.
-Do not commit unless asked.
+Manual commits by owner
+
+## Documentation
+
+`codocu.md` is a must read.
+This repository should follow Codocu's rules and spirit in documentation.
+
 
 ## Local testing
 
@@ -64,6 +69,3 @@ Do not commit unless asked.
   `claude --plugin-dir <repo path>`, then `/reload-plugins` after edits.
 - Never copy `skills/` into a project to "test" it — that produces
   unnamespaced, colliding skills.
-- There is no marketplace config yet (`marketplace.json` is a pending
-  `docs/todo.md` item). Do not document or suggest a marketplace install path
-  until it exists.

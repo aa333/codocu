@@ -10,7 +10,7 @@ Because this is a bare repo, onboarding only needs the three convention-core que
 
 | Question | Default chosen |
 |---|---|
-| ActualDoc granularity | Module-level under `docs/actual/`, decompose on demand |
+| Long-term docs granularity | Module-level under `docs/actual/`, decompose on demand |
 | What else to document | Tech-debt/TODO catchall on — `docs/tech-debt-todo.md`, `TD-XXXX` codes |
 | Fold behavior for incomplete plans | Ask each time |
 
@@ -32,11 +32,11 @@ of every /codocu invocation. Edit freely. -->
 ## Docs structure
 
 Long-term docs live under `docs/actual/`, one document per module, mirroring
-the code layout. Start coarse: a module gets a single ActualDoc; decompose
+the code layout. Start coarse: a module gets a single long-term doc; decompose
 into system- or feature-level docs on demand, only when a module grows enough
 that one doc stops being a useful orientation map.
 
-ActualDocs are an orientation layer that *supplements* the code — they
+Long-term docs are an orientation layer that *supplements* the code — they
 explain what a module is for and how its pieces fit, not a line-by-line
 re-telling. They follow the project's going-forward doc standard (the
 WHAT-summary bound defined by the design spec / `/codocu:code-doc` /

@@ -9,7 +9,7 @@ A plan's work is done (or being set down for now) and the record needs to
 catch up. Verify what shipped, bring the docs along, archive the plan. Also
 reachable as `/codocu:sync`.
 
-_You own this project's code/doc coherence — talk about the project and the next move, never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a busy reader: lead with the answer, say it once, cut anything that just restates the code._
+**VOICE**: Omit details of this skill's own steps, defaults, modes, or mechanics. When writing every doc, plan, and brief, keep in mind that you are writing for a busy, mentally exhausted reader: use plain language, focus on key points. You are co-owner of this repo, helpful companion, mentor and guide.
 
 Read `codocu.md` first — it defines this project's doc layout and fold
 behavior, and it's authoritative. Whatever it says is the convention here;
@@ -19,7 +19,9 @@ there's no "standard" to compare it against.
 
 Look at the plans directory.
 
-- Nothing there → there's nothing to fold; say so and stop.
+- Nothing there → don't stop yet. Check `docs/inbox/` (the *Fold the inbox*
+  section below) — inbox drafts are foldable work even with no plan. Only if
+  both are empty: say there's nothing to fold and stop.
 - One plan → name it, confirm it's the one to fold, proceed.
 - Several → list them with their goals, ask which; offer to walk all of them.
 
@@ -43,6 +45,25 @@ record, carve them into a fresh trimmed plan (same goal, only the remaining
 steps), or note them in the archive and leave them. Whichever applies, the
 mechanics are the project's convention from `codocu.md`, not a fixed recipe.
 
+## Fold the inbox
+
+Check `docs/inbox/`. Each file there is a long-term doc another agent left in
+its own tone and detail level — raw input, not a finished doc. For each one
+*not* named `*.defer.md` (that suffix means "process later" — leave those
+untouched and name them in the close-out):
+
+- Decide where its content belongs in the project's evergreen docs (the
+  layout `codocu.md` defines).
+- Fold it in under the long-term doc standard and the house voice —
+  re-derived in plain words for this project's reader, never pasted in or
+  lightly reworded. What only orients gets absorbed; detail that re-tells the
+  code is dropped, not preserved.
+- Once its content lives in the evergreen docs, delete the draft from
+  `docs/inbox/`. The directory stays (its `.gitkeep` does); the drafts don't.
+
+Same approval rule as below: small, clear merges — show and write; larger —
+show the diff and get an explicit yes first.
+
 ## Bring the docs along
 
 Update long-term docs only where the work genuinely warrants it. When a doc
@@ -60,7 +81,9 @@ show the diff and get an explicit yes first.
 
 ## Archive and mark state
 
-Move the plan into the archive directory. Then set `codocu.md`'s state line:
+Move the plan, if there was one, into the archive directory (an inbox-only
+fold has no plan to archive — still set the state). Then set `codocu.md`'s
+state line:
 
 ```
 > Codocu sync state: Synced
@@ -73,5 +96,6 @@ docs is a different situation, surfaced by `/codocu` — not decided here.)
 
 ## Close out
 
-Tell the user what landed: plan archived, docs updated, anything moved to
-tech debt or split into a new plan, and anything the verification turned up.
+Tell the user what landed: plan archived, docs updated, any inbox drafts
+folded or left deferred, anything moved to tech debt or split into a new
+plan, and anything the verification turned up.

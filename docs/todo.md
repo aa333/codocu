@@ -1,22 +1,34 @@
 # Codocu TODO
 
+## 0.2.0 todos
 
-## V1 todos
+**TD-router-skill-summary-format**
+Check if router skill format template is needed when given summary
 
-**`:fold` test suite check**
-Before archiving a plan, `:fold` should verify the test suite passes. If tests fail, block archiving and report which steps may be incomplete. Exact behavior on failure (warn-only vs. hard block) configurable in `codocu.md`. Implement and test against a real project before finalizing policy.
+**Manually touch all skill texts**
+- [v] codocu
+- [ ] apply
+- [ ] code-doc
+- [ ] doc-code ?
+- [ ] apply
+- [ ] fold / sync
+- [v] init
+- [ ] propose
+
+**consider interaction with other planning/coding agents**
+We already allow other agents to write own plans in the inbox folder.
+Consider reframing codocu as doc-first agent, delegate plans and coding to others. doc-code sync is good in theory but it wont replace dev specialists. We need a way to compose skills.
+Proposal
+- make codocu.md an enforced read through CLAUDE - short yet strong doc on how to write documentation (done)
+- use specialist skills, superpowers, openspec or whatever to make plans and implement them
+- verify codocu standards are applied using hooks (?) or claude.md clauses after implementations
+- fold as needed, process inbox during fold
+- propose/doc-code/apply stays for now, but less prominent - other tools do spec->plan->code better 
+
+##  Future
 
 **`marketplace.json` and/or npx script for install/distribution testing**
 No `.claude-plugin/marketplace.json` exists, so the plugin can only be loaded via `--plugin-dir`. Add a local marketplace manifest so the full `/plugin marketplace add` → `/plugin install codocu@<marketplace>` flow can be tested before publishing.
-
-**Apply Varya's prompt** —  re-try without brainstorm skill
-
-**Meta-lines about read-only mode in exploration finale**
- "that's a write — needs your explicit go-ahead"
- "This is the gated, read-only deliverable"
-Find out what makes the skill to state meta-stuff again, and let it decide organically to ask user what to do
-
-## V2 / Future
 
 **Behavioral tuning mechanism — re-design needed**
 `docs/tuning.md` (dial registry: voice intensity, reader economy, etc.) was
@@ -28,7 +40,7 @@ operable docs→skills(code) generation flow. Until then the skill prose is
 the sole source of truth for behavior.
 
 **`/codocu:status` — overview and housekeeping**
-Read-only diagnostic: show state of all plans (active, stalled, nearly complete), surface obvious desyncs, suggest next action. Possible home for an auto-fold prompt.
+Diagnostic: show state of all plans (active, stalled, nearly complete), surface obvious desyncs, suggest next action. Possible home for an auto-fold prompt.
 
 **`:fold` auto-trigger decision**
 Currently `:fold` is suggested at end of flows that produced a plan, never forced. Revisit whether to auto-trigger it or tie to a commit hook during plugin stabilization.
@@ -36,8 +48,8 @@ Currently `:fold` is suggested at end of flows that produced a plan, never force
 **`codocu.md` drift detection**
 If the user renames folders, `codocu.md` paths go stale. No mechanism defined. Candidate: a `codocu:init --check` validation step or a `:status` sub-check.
 
-**ProposalSummary persistence**
-ProposalSummary is intentionally ephemeral across all flows. Two situations may warrant persisting it — assess during real use:
+**Proposal Summary persistence**
+Proposal Summary is intentionally ephemeral across all flows. Two situations may warrant persisting it — assess during real use:
 - *Large brownfield `:code-doc`:* the analysis may be worth keeping as a Plan preamble or a separate artifact (assess during first real brownfield use).
 - *Long pre-Plan session:* if a session grows long before a Plan is written (extended scope back-and-forth), consider auto-writing it to disk once a conversation-length threshold is crossed. Most proposals resolve to a Plan within a short session, so this is speculative.
 

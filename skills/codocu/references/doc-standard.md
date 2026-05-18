@@ -21,6 +21,9 @@ two ways:
   exists but doesn't do its one job.
 
 When judging existing docs, each failure is a divergence in its own right.
+One exception: a `docs/inbox/` draft is raw pre-standard input awaiting a
+fold, not a divergence to flag. Bringing it to this standard *is* the fold;
+holding it to the standard beforehand mistakes the input for the output.
 
 ## When a decision earns a line
 

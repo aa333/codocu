@@ -20,15 +20,17 @@ unknown until first assessed). `propose`, `apply`, `doc-code`, and a large
 a successful fold; a small `code-doc` sets `Synced` directly. "Desynced" is
 an orientation diagnosis, not a marker any flow writes.
 
+A non-empty `docs/inbox/` is not a fourth state. It holds long-term docs
+other agents produced in their own tone, not yet processed — an outstanding
+*folding obligation*, surfaced by orient and cleared by `fold`.
+
 ## Moves
 
-- **`/codocu` — orient.** The state-aware entry point. Read-only: classify
-  the state, give an orientation brief, recommend a sized next move. Branches
-  to setup, deep drill, or conflict resolution only on an explicit user
-  choice.
+- **`/codocu` — orient.** The state-aware entry point. Classify
+  the state, give an orientation brief, recommend a sized next move. 
 - **`/codocu:init` — set up.** Goes straight to the setup (onboarding)
   branch.
-- **`/codocu:propose` — intent → plan.** A ProposalSummary in the
+- **`/codocu:propose` — intent → plan.** A proposal summary in the
   conversation, iterated to approval, then a plan in `docs/plans/`.
 - **`/codocu:apply` — work a plan.** Resume an existing plan; do the
   unchecked steps; suggest `fold` when done.
@@ -38,7 +40,8 @@ an orientation diagnosis, not a marker any flow writes.
   clear delta: update directly, no plan. Large or brownfield: proposal →
   plan.
 - **`/codocu:fold` (alias `/codocu:sync`) — close out.** Verify what shipped
-  against code and git history (never the checkboxes), bring the docs along,
+  against code and git history (never the checkboxes), fold any
+  `docs/inbox/` drafts into the evergreen docs, bring the docs along,
   archive the plan, set `Synced`.
 
 ## Setup (onboarding)
@@ -51,22 +54,7 @@ fills `codocu.md` from `templates/codocu.md`, and never overwrites an
 existing `codocu.md`. The existing-docs stance is a rollout strategy only —
 it never weakens the doc standard.
 
-## Gates
 
-The invariants every flow honors:
-
-- Read-only orientation writes nothing — no `codocu.md`, plan, code, or
-  docs. A prompt that pre-empts the setup choice makes orientation skip the
-  offer and just do the read-only look.
-- Setup writes `codocu.md` only on an explicit go-ahead; never clobbers an
-  existing one.
-- The deep drill is opt-in, read-only, and runs only on an explicit accept;
-  its cost is disclosed first and it is tiered (inline / plan-gated /
-  hand-off), so the user controls cost by construction.
-- Conflict resolution (both sides changed, no active plan) is its own gated
-  branch; if `codocu.md` is absent it stays read-only and does not create
-  it.
-- `fold` trusts code and git history, not `[ ]`/`[x]`.
 
 The deep-drill, conflict-resolution, reconciliation-plan, and onboarding
 procedures live as on-demand references in the `codocu` skill — loaded only

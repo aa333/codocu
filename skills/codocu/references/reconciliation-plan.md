@@ -1,4 +1,4 @@
-# Codocu — Reconciliation Plan (a shape, not a script)
+# Codocu — Reconciliation Plan
 
 Read this only when orientation found a **genuinely dirty, multi-area** repo
 and you're recommending how to climb out of it. For a simple one-sided
@@ -29,9 +29,6 @@ genuinely ambiguous; don't invent a truth.
 Order areas by what's most load-bearing or most diverged first, unless the
 user has a reason to sequence differently.
 
-**Persisting it.** If the project is initialized, this becomes an ordinary
-Codocu plan in the plans directory — then `/codocu:apply` works it at any
-pace and `/codocu:fold` closes it, like any other plan. If it isn't
-initialized, say so: `/codocu:init` first, since nothing persists without
-it. Presenting the shape is read-only; writing it down is a separate,
-deliberate step the user asks for.
+**Persisting it.**  
+Ordinary Codocu plan in the plans directory — `/codocu:apply` works it at any
+pace and `/codocu:fold` closes it, like any other plan. 

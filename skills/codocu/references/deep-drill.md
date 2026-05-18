@@ -1,21 +1,17 @@
-# Codocu — Deep Drill (read-only, cost-aware)
+# Codocu — Deep Drill (cost-aware state analysis)
 
 Loaded by `/codocu` **only when the user has accepted the offered deep drill**.
-This is the expensive path. It stays **read-only**: write nothing — no file,
-no `codocu.md`, no plan on disk. You may *present* a plan in your reply; you do
-not save it.
+This is the expensive path. Result of this procedure is the report of code/doc sync state with overall analysis and per-area report.
 
 ## 0. Reuse, don't re-derive
 
 Use the **orientation brief** already in this conversation (changed-surface +
-rename map, docs/plans completion claims, per-area disagreements). Do not
-re-run the full inventory. If invoked without a prior orientation, run one
-compact bounded pass first (`git status`, list `docs/plans/`, list docs) —
-counts and paths only, no whole-file reads.
+rename map, docs/plans completion claims, per-area disagreements). 
+If invoked without a prior orientation, run one compact bounded pass first (`git status`, list `docs/plans/`, list docs) — counts and paths only, no whole-file reads.
 
 ## 1. Detect changes with more than git
 
-Git is one signal, not the only one:
+Git is a good tool, but not the only one:
 - **git** (when tracked): `git diff --stat`, `git status` — fast path.
 - **filesystem**: untracked / new files; file mtimes vs the `codocu.md` sync
   marker or doc mtimes — catches untracked refactors git-list reasoning misses.
@@ -35,17 +31,11 @@ Classify (defaults; a project may override these in `codocu.md` under
 
 | Tier | Trigger | What you do |
 |---|---|---|
-| **Inline** | ≤10 changed code files **and** ≤500 changed lines **and** ≤1 completion-claiming plan | §5 scoped drill directly, then §7 report |
-| **Plan-gated** | anything above Inline | §3 disclose, then produce a triaged drill plan (§6) and present it — do **not** run the heavy audit unprompted |
-| **Hand-off** | >150 changed files **or** >10k changed lines **or** no VCS and hundreds of source files to cold-scan | decline; present a short triage skeleton only; recommend an external/whole-repo harness — out of Codocu's scope |
+| **Inline** | ≤10 changed code files **and** ≤500 changed lines **and** ≤1 completion-claiming plan | §5 scoped drill directly, then report |
+| **Plan-gated** | anything above Inline | produce a triaged drill plan and present it — do **not** run the heavy audit unprompted |
+| **Hand-off** | >150 changed files **or** >10k changed lines **or** no VCS and hundreds of source files to cold-scan | Explicitly state that costs may be prohibitive. If agreed upon, build a plan of further deeper analysis, using iterative approach - pick axis to break analysis to phases (layers, systems, modules, areas, whatever makes sense), prepare higher order plan with those phases, each phase producing separate deep-analysis plan to persist the long process. There's no definitive guide for this step yet |
 
-## 3. Disclose cost before heavy work
-
-Before doing anything expensive, tell the user the size in plain terms:
-> "This drill covers ~N changed code files / ~M doc files / ~L diff lines and
-> K completion-claiming plans — a <tier> drill. <what that means for cost>."
-
-## 4. Anchors (what to actually check)
+## 3. Anchors (what to actually check)
 
 Two anchors, strongest bound first:
 
@@ -75,7 +65,7 @@ most recent) — never all of them.
   divergence requires it.
 - **Do not execute code by default.** Only when a behavioral claim cannot be
   judged from the diff, run a single named, bounded validation command — and
-  report that you did (read-only nuance).
+  report that you did.
 - **Deterministic public-API field-rename check:** for any changed file
   defining a returned/serialized API object, enumerate added / removed /
   renamed public fields from the diff and cross-check each against long-term
@@ -83,8 +73,7 @@ most recent) — never all of them.
 
 ## 6. The triaged drill plan (Plan-gated only)
 
-Present (do not save) a plan in Codocu plan format. Order items by triage
-priority:
+Present a plan in Codocu plan format. Order items by triage priority:
 
 1. VCS changes + active plans (current work; sync-critical)
 2. README / context files (`CLAUDE.md`, `AGENTS.md`, etc.)
@@ -92,7 +81,7 @@ priority:
 4. Archived plans — opt-in deep bookkeeping, windowed (lowest)
 
 ```markdown
-# Drill Plan (proposed — not saved)
+# Drill Plan
 
 **Goal:** Verify code vs docs/plans coherence; surface claimed-complete≠done.
 
@@ -110,5 +99,4 @@ Report per checked unit: claimed vs actual, with an explicit "doc says X /
 code says Y" line for every renamed/diverged identifier, and a verdict on
 whether each completion-claiming unit is genuinely complete. For Plan-gated,
 the deliverable is the triaged plan + cost disclosure; offer to persist it via
-`/codocu:init` + an explicit go-ahead (persisting is a separate, gated step —
-the drill itself never writes). Stop. Still read-only.
+`/codocu:init` + an explicit go-ahead 

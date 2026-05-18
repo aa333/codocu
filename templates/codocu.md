@@ -12,4 +12,11 @@ of every /codocu invocation. Edit freely. -->
 
 ## Fold settings
 
+## Subagent guidelines
+
+Other agents/tools with their own plan or spec format: put planning and
+immediate-implementation docs in `docs/plans/` with real per-step status;
+put long-term docs in `docs/inbox/` for Codocu to fold. Inbox drafts stay
+uncommitted unless named `*.defer.md` (the explicit process-later marker).
+
 ## Additional notes

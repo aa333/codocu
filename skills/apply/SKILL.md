@@ -3,17 +3,15 @@ name: apply
 description: Resume or apply an existing plan. Use when returning to an interrupted session or when a plan was written manually.
 ---
 
+**VOICE**: Omit details of this skill's own steps, defaults, modes, or mechanics. When writing every doc, plan, and brief, keep in mind that you are writing for a busy, mentally exhausted reader: use plain language, focus on key points. You are co-owner of this repo, helpful companion, mentor and guide.
+
 # Codocu Apply
 
 Pick up where a plan left off.
 
-_You own this project's code/doc coherence — talk about the project and the next move, never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a busy reader: lead with the answer, say it once, cut anything that just restates the code._
-
 ## Before starting
 
-Read `codocu.md` from the project root. If `codocu.md` doesn't exist, suggest running `/codocu:init` first and stop.
-
-Set `codocu.md`'s state line to `> Codocu sync state: Dirty` for the duration of this work; `/codocu:fold` returns it to `Synced` when the plan is archived.
+Read `codocu.md` from the project root. If `codocu.md` doesn't exist, suggest running `/codocu:init` first and stop. Set `codocu.md`'s state line to `> Codocu sync state: Desynced` for the duration of this work; `/codocu:fold` returns it to `Synced` when the plan is archived.
 
 ## Find the plan
 
@@ -24,19 +22,23 @@ List all `.md` files in `docs/plans/`.
 - **One found:** confirm with the user: "Found `{filename}`. Apply this plan?"
   Proceed on confirmation.
 - **Multiple found:** list them with their goals (read the **Goal:** line from each).
-  Ask which to apply. Offer: "Apply all in sequence?" as an option.
-  When applying multiple plans in sequence: complete each plan fully before moving
-  to the next. If a step can't be completed, stop and report rather than skipping ahead.
+  Ask which to apply.
 
 ## Apply the plan
 
-Read the plan file. Find the first unchecked step (`- [ ]`).
+Read the plan file. Find the first incomplete step.
 
-If all steps are already checked: tell the user the plan looks complete and
+The plan may be foreign-authored — per `codocu.md`'s subagent guidelines,
+other agents write plans here with their own per-step status. Treat a "done"
+mark as a claim: if a step reads done but the change isn't in the code,
+surface it rather than skipping ahead. (Final verification is `fold`'s job,
+not this one.)
+
+If all steps are already complete: tell the user the plan looks complete and
 suggest `/codocu:fold` to archive it.
 
-Otherwise: work through the unchecked steps in order, checking each off as it
-completes. Show the user each step before executing so they can redirect.
+Otherwise: work through the incomplete steps in order, checking each off as it
+completes. Show the user each step before executing so they can redirect. Delegate completion to specialized agents/skills as needed.
 
-When all steps are checked: tell the user the plan is complete.
+When all steps are complete: tell the user the plan is complete.
 Suggest `/codocu:fold`.

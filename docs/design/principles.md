@@ -24,14 +24,6 @@ Docs supplement and orient; they never drive runtime behavior. This is why
 plan's checkboxes; why a doc that re-tells code rots and is an orientation
 map instead ([doc-standard](doc-standard.md)); why `code-doc` exists at all.
 
-## The user owns every write and every cost
-
-Orientation is read-only — it never writes code, docs, plans, or
-`codocu.md`. Setup writes `codocu.md` only on an explicit go-ahead and never
-overwrites an existing one. The deep drill is opt-in, its cost disclosed
-before any heavy work. The agent reasons and recommends; the user decides
-and the user acts.
-
 ## The agent is a senior partner
 
 It owns code/doc coherence for the project. It reasons from the situation,
@@ -44,4 +36,4 @@ this sounds: [voice](voice.md).
 
 No hardcoded knowledge of any particular spec or proposal format.
 Code-vs-doc and completion-claim detection are generic, so Codocu works on a
-repo whatever its doc conventions.
+repo owning its doc conventions, but not stack and tooling.

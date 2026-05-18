@@ -2,3 +2,9 @@
 .claude/settings.local.json
 # state-guard.ps1 stores its local-only fixture snapshot next to the script
 testing/**/.snapshot/
+
+# Inbox: foreign-agent drafts stay local until folded. *.defer.md is the
+# explicit "commit and process later" marker; .gitkeep holds the directory.
+docs/inbox/*
+!docs/inbox/.gitkeep
+!docs/inbox/*.defer.md

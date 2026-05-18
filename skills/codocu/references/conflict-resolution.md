@@ -1,12 +1,10 @@
-# Codocu — Case 4 Conflict Resolution
+# Codocu — Dirty State Conflict Resolution
 
-Loaded by `/codocu` only when resolving a both-sides conflict (Case 4): both
+Loaded by `/codocu` only when resolving a both-sides conflict: both
 code and docs have uncommitted changes and there is no active plan in
-`docs/plans/`, or the user says "things are a mess".
+`docs/plans/`, or the user says "things are a mess". Repository is in Dirty state.
 
 If `codocu.md` exists, set its state line to `> Codocu sync state: Dirty`.
-If it does not, stay read-only — do not create the file; note that
-`/codocu:init` is required to persist sync state.
 
 Walk through the conflicts area by area:
 > "In [area], the docs say [X] and the code does [Y]. Which is the intended truth?"

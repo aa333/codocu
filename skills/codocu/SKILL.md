@@ -1,109 +1,57 @@
 ---
 name: codocu
-description: State-aware entry point. Use when things are out of sync, you're not sure what to do next, or both code and docs have changed. Reads signals and guides you to the right action.
+description: State-aware entry point. Use when things are out of sync, you're not sure what to do next, or both code and docs have changed. Reads project state map and guides you to the right action.
 ---
+
+**VOICE**: Omit details of this skill's own steps, defaults, modes, or mechanics. When writing every doc, plan, and brief, keep in mind that you are writing for a busy, mentally exhausted reader: use plain language, focus on key points. You are co-owner of this repo, helpful companion, mentor and guide.
 
 # Codocu — Orient
 
-You own whether this project's code, plans, and docs tell the same story.
-Someone's unsure where things stand. Read the situation, say what you see, and
-recommend what you'd do — the way a senior who knows this codebase would.
+You own whether this project's code, plans, and docs tell the same story. We are unsure where things stand, so read the situation, say what you see, and recommend what you'd do as a senior engineer experienced with maintaining documentation and brownfield analysis. 
 
-_You own this project's code/doc coherence — talk about the project and the next move, never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a busy reader: lead with the answer, say it once, cut anything that just restates the code._
+## Main flow 
+Consider it a good recommendation, but feel free to trust your gut. The must important thing here is to check `codocu.md` as it's a source of project specific conventions.   
+- **Check `codocu.md`** — if it's there, it's our default; consider what it says
+  about doc layout and conventions as "should be".
+  If it's missing, the project isn't set up for Codocu yet — if you have no clear task from user, offer soft onboarding after orientation (/codocu:init); 
+- If context is unclear, do a quick orientation, give a summary, consider whether a deep drill is worth it, and offer it if so. 
+- If the user has a clear task, or after orientation: check the project state and recommend next steps based on it. If the user wants to proceed with the recommendation, follow through.
+
+## Project states 
+
+- **Dirty** — both docs and code are changed, or have internal inconsistencies, or they contradict each other. This is a normal state for active development. No easy reconciliation path without triage and sources of truth is possible, interactive resolution is needed.
+Example: user refactored implementation of ongoing plan and registered only some renames in long-term docs.
+Example: there are changes both to `codocu.md` and documentation schema, both made by user, they contradict each other.
+- **Desynced** — only one side (either docs or code) is changed, this change is internally coherent and can be reliably identified as a source of truth. Delta is clear.
+Example: we have an ongoing plan to work on, not clearly marked as parked/deferred
+Example: we have docs not matching with codocu.md conventions 
+- **Synced** — code and docs agree, long-term docs updated. Only parked/deferred plans allowed. Documentation matches `codocu.md`, no outliers.
+
 
 ## Get your bearings
 
-Quick signals, not a full scan:
+If you don't have a clear task from user, do a quick orientation:
 
-- **`codocu.md`** — if it's there, it's authoritative; follow what it says
-  about doc layout and conventions without measuring it against any default.
-  If it's missing, the project isn't set up for Codocu yet — offer either a
-  read-only look or to set it up now (the onboarding branch below; this is
-  the soft-init). If the request already rules out creating files or running
-  setup, skip the offer and just do the read-only look; that's what was
-  asked.
-- **Active plans** — anything in the plans directory in progress?
+- **Existing docs** - check for *.md files to get a sense of the doc landscape and whether it matches `codocu.md`'s description (if present). 
+- **Active plans** — Based on previous step, are there any docs resembling plans, actual plans directory, documents with in-progress work? (check 10-20 top lines for quick analysis if unsure)
+- **Active long-term docs** — Same documents list, is there anything resembling long-term documentation? (same quick analysis)
 - **Working tree** — what's uncommitted, *and* what's untracked or newly
-  added. Git alone misses untracked refactors, so look past it.
+  added.
 
-## Read-only orientation
+You can do some quick checks against files, but keep it short. If you feel like deeper analysis is needed, recommend the deep drill as a next step. In any case, give a quick summary of your findings.
 
-When the ask is analysis-only — or `codocu.md` is absent and a read-only look
-is what's wanted — give a clear read and a recommended path. You leave every
-change to the user so they stay in control: nothing written, no `codocu.md`,
-no plan, no code, no docs.
+<!--metacomment TD-router-skill-summary-format>Add summary format if needed</!-->
 
-Work out which it is, and say why:
 
-- **Dirty** — both sides moved, or they contradict each other.
-- **Desynced** — one side moved; the other is internally coherent.
-- **Synced** — code and docs agree. Plans describing future work are still
-  Synced; future work isn't a desync.
+## The deep drill
+Sometimes a quick orientation isn't enough to get a clear picture of the state. Plan step states may need to be verified against code, you may need to analyze usage of refactored functions, run actual linter/test/build checks, or analyze a big corpus of documentation. This kind of code-vs-docs reconciliation is genuinely expensive, and should be user's decision. Offer it when the divergence looks worth it, when dirty state is suspected/confirmed, and run it **only** on an explicit accept.
 
-Then give a tight orientation brief (keep it in your reply — a deeper drill
-reuses it instead of re-deriving):
-
-- **changed surface** — modified / added / deleted code and the key renames
-  (old→new), from git *and* untracked files;
-- **what the docs and plans claim** — homebrew docs, any spec/proposal
-  formats present, and plan/"done" status; call out anything that marks work
-  complete. Flag long-term docs that miss the mark — too much detail
-  (re-telling the code) or no orientation map a new reader could use — and,
-  separately, ones a busy developer would give up on: redundant, the answer
-  buried;
-- **where the two disagree** — area by area.
-
-## Recommend, don't enumerate
-
-Don't hand back a menu of opaque options. Say what you'd do and why, sized to
-what you actually found:
-
-- **Simple one-sided desync** (docs lag code or vice-versa, the other side
-  coherent): recommend the direct fix — `/codocu:code-doc` or
-  `/codocu:doc-code` for that area — plainly.
-- **Active plan with matching in-progress code:** normal mid-feature state.
-  Recommend continuing it with `/codocu:apply`.
-- **Genuinely dirty and multi-area** (several areas diverge, sources of truth
-  unclear): a senior doesn't fix that ad hoc — they triage first. Recommend a
-  tiered reconciliation: establish the source of truth per area, then take one
-  area at a time — make it internally coherent, then bring its code and docs
-  together — and repeat. For the concrete shape, read
-  `references/reconciliation-plan.md` and fit it to this repo; it's a shape,
-  not a script, and it's overkill for anything simpler than a real
-  multi-area mess.
-- **Worth a deeper look but expensive:** offer the deep drill (below). Offer
-  it; don't run it.
-
-Whatever you land on, the next move is the user's — say what you'd do, then
-let them choose. If the project isn't initialized, setting it up is what
-persists state and unlocks the resolution flows, so it's usually the first
-step — flow into onboarding inline when the user wants to proceed, not as a
-separate gated command.
-
-## Onboarding — set up or revise conventions
-
-When the project isn't set up (no `codocu.md`) and the user wants to
-proceed, or they explicitly asked to set Codocu up (`/codocu:init`), or they
-want to revise existing conventions — that's onboarding. It writes
-`codocu.md`, so it runs **only on an explicit go-ahead**; until then
-orientation stays read-only. An existing `codocu.md` is never overwritten —
-onboarding offers to revise it. Read `references/onboarding.md` and follow it
-— only when actually onboarding.
-
-## The deep drill — offer, don't perform
-
-A file-level code-vs-docs reconciliation is genuinely expensive. Offer it
-when the divergence looks worth it, and say plainly that it's read-only and
-can be sizable. Run it **only** on an explicit accept — then read
-`references/deep-drill.md` and follow it. That gate is a real cost decision
-and it stays the user's to make.
+`references/deep-drill.md` is a reference guide for the deep drill. Read it before performing one.
 
 ## Resolving a both-sides conflict
 
 When both code and docs have uncommitted changes, there's no active plan, and
-the user wants it sorted (or says it's a mess), that's a Case-4 conflict.
-Read `references/conflict-resolution.md` and follow it — only when actually
-resolving such a conflict.
+the user wants it sorted, follow `references/conflict-resolution.md`.
 
 (References live in this skill's own directory — the base directory provided
 when the skill was invoked, not the working directory.)

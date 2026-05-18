@@ -1,9 +1,6 @@
 # Codocu
 
 > Codocu sync state: Synced
-> Documentation state: evergreen design docs are authoritative and live in
-> `docs/design/`; active dated specs/plans in `docs/plans/`, superseded ones
-> archived in `docs/archive/`.
 
 ## Docs structure
 
@@ -29,11 +26,17 @@ is the source of truth**; docs orient, they never drive runtime behavior.
   Read the relevant one before changing skill semantics.
 - `CLAUDE.md` §First principle — the dev-facing constitution; the same idea
   as `principles.md`, for the contributor at work.
+- `docs/inbox/` - long-term docs not yet processed by codocu (e.g. produced by other agents with their preferred context level and tone). These are in-between fleeting and long-term, and should not be committed unless marked explicitly for deferred processing.
 
 **Roadmap**
 
-- `docs/todo.md` — the single home for all roadmap, TODO, and tech-debt
-  (V1 / V2 / Meta sections). Remove an entry when it ships.
+- `docs/todo.md` — the single home for all roadmap, TODO, and tech-debt records
+format: 
+```
+**TD-short-id**
+Todo record's short summary. What is wrong, what needs to be done
+```
+Short id, not numbers, to avoid clashing. Where acceptable, leave cross-references in code and docs to these records. 
 
 **Active specs & plans**
 
@@ -45,10 +48,7 @@ is the source of truth**; docs orient, they never drive runtime behavior.
 **History**
 
 - `docs/archive/` — superseded dated specs/plans, kept as history, not
-  deleted (e.g. specs rebuilt into the evergreen `docs/design/`). This repo
-  is built *with* superpowers skills and not yet fully self-hosted on Codocu;
-  adopting `docs/plans/` above is the first step of the "Rewrite `codocu.md`
-  using Codocu" Meta item in `docs/todo.md`.
+  deleted (e.g. specs rebuilt into the evergreen `docs/design/`). 
 
 **Provenance & evidence**
 
@@ -56,3 +56,7 @@ is the source of truth**; docs orient, they never drive runtime behavior.
   provenance.
 - `testing/` — long-term test reports (deliberately outside `docs/` — test
   evidence, not documentation); suites are dated directories.
+
+## Subagent guidelines
+
+Agents/skills that come with their dedicated opinionated plan/doc/spec structures must keep documents related to planning and immediate implementation in docs/plans. Plans must contain actual completion status per each step. Long-term documents are to be kept in docs/inbox, and cleanly marked for codocu's processing and folding.

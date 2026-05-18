@@ -22,7 +22,8 @@
       "Bash(rm -f testing/transcripts/*)",
       "Bash(rmdir testing/transcripts)",
       "Bash(rm -rf testing/transcripts)",
-      "Skill(superpowers:writing-plans)"
+      "Skill(superpowers:writing-plans)",
+      "Skill(codocu:fold)"
     ]
   }
 }
