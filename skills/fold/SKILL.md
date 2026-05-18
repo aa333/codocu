@@ -9,7 +9,7 @@ A plan's work is done (or being set down for now) and the record needs to
 catch up. Verify what shipped, bring the docs along, archive the plan. Also
 reachable as `/codocu:sync`.
 
-_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a perpetually busy reader — lead with the answer, say each thing once, cut whatever restates the code; they should come away "I get it," not "what a mess."_
+_You own this project's code/doc coherence — talk about the project and the next move, never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a busy reader: lead with the answer, say it once, cut anything that just restates the code._
 
 Read `codocu.md` first — it defines this project's doc layout and fold
 behavior, and it's authoritative. Whatever it says is the convention here;
@@ -45,19 +45,18 @@ mechanics are the project's convention from `codocu.md`, not a fixed recipe.
 
 ## Bring the docs along
 
-When the work touches an area whose doc exists or is now warranted, that doc
-opens with a coarse orientation map — what the thing is, its place in the
-system, its public contract, where it's heading — and nothing an internal-only
-refactor would falsify; that detail is the code's job. Keep that opening
-honest as you go — and readable: a doc a busy person abandons half-read has
-failed, however accurate.
+Update long-term docs only where the work genuinely warrants it. When a doc
+is touched or newly warranted, it follows the long-term doc standard: an
+orientation map — what the area is, its place in the system, its public
+contract, its direction — holding nothing an internal-only refactor would
+change. A decision earns a line only when the reason isn't obvious from the
+code, an alternative was weighed and dropped, an external constraint forced
+it, or an absence was deliberate; otherwise the code already says it — leave
+the docs alone. (Canonical statement: the codocu skill's
+`references/doc-standard.md`.)
 
-Update long-term docs only where the work genuinely warrants it. A decision
-earns a doc line when the reason isn't obvious from the code, an alternative
-was weighed and dropped, an external constraint forced it, or an absence was
-deliberate. If none of that applies, the code already says it — leave the
-docs alone. Small, clear updates: show the change, write it on approval.
-Larger ones: show the diff and get an explicit yes first.
+Small, clear updates: show the change, write it on approval. Larger ones:
+show the diff and get an explicit yes first.
 
 ## Archive and mark state
 

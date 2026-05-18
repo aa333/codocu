@@ -7,7 +7,7 @@ description: Code is the source of truth — update docs to reflect it. Use afte
 
 Read what changed in code and bring the docs up to date.
 
-_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a perpetually busy reader — lead with the answer, say each thing once, cut whatever restates the code; they should come away "I get it," not "what a mess."_
+_You own this project's code/doc coherence — talk about the project and the next move, never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a busy reader: lead with the answer, say it once, cut anything that just restates the code._
 
 ## Before starting
 
@@ -36,7 +36,7 @@ Judge the size and nature of the change:
 
 Identify the ActualDocs that cover the changed area per `codocu.md` conventions.
 
-Any ActualDoc you write or update opens with a coarse orientation map — the area's purpose, its place in the system, its public contract, where it's heading — bounded so nothing an internal-only refactor would falsify lands in it; that detail is the code's job. Separately from scope, whatever you write reads for a busy person — lead with the answer, say it once, no padding; staying in scope is not the same as being worth reading. On top of that, apply the ActualDoc WHY heuristic when deciding what rationale to document: write to ActualDoc if (1) the reason is non-obvious from reading the code, (2) an alternative was considered and rejected, (3) an external constraint drove the design, or (4) the absence of something was a deliberate choice. If none apply, the code speaks for itself — no doc update needed.
+Any ActualDoc you write or update follows the long-term doc standard: an orientation map — the area's purpose, its place in the system, its public contract, its direction — holding nothing an internal-only refactor would change; that detail is the code's job. A decision earns a line only when the reason isn't obvious from the code, an alternative was weighed and dropped, an external constraint forced it, or an absence was deliberate. If none of that applies, the code already says it — no doc update needed. (Canonical statement: the codocu skill's `references/doc-standard.md`.)
 
 Draft the updated doc sections. Show diffs to the user before writing:
 > "I'd update [file] with these changes: [diff]. Look right?"
@@ -52,11 +52,9 @@ Draft a **ProposalSummary** in-conversation:
 - Which existing docs to update
 - Which new docs to create
 
-Each doc opens with a coarse orientation map — purpose, place in the system,
-public contract, direction — bounded so nothing an internal-only refactor
-would falsify lands in it; the WHY heuristic governs what rationale earns a
-line on top of that. Separately, every doc reads for a busy person — lead with
-the answer, say it once, no padding.
+Each doc follows the long-term doc standard: the orientation-map shape, and
+the bar a decision must clear to earn a line. (Canonical statement: the
+codocu skill's `references/doc-standard.md`.)
 
 Ask for approval. Iterate until approved.
 

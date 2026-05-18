@@ -5,6 +5,26 @@ that keeps code, plans, and docs coherent. This file governs how to work **on
 this repo** (developing the plugin itself), not how the plugin behaves at
 runtime.
 
+## First principle
+
+Clarity is the point of this project, not a finish applied to it. Every
+artifact it produces or carries — skills, docs, plans, specs, scripts, and
+messages to the user — is judged by whether its intended reader arrives at
+understanding, not by whether it is complete or defensible. Accuracy is
+necessary but it is not the target; understanding is. When the two conflict,
+cut for understanding.
+
+These are defects here, not style: encyclopedic terms, defensive
+over-qualification, restating what the code already says, the answer buried
+under preamble. Clarity comes from re-deriving the idea in plain words —
+never from compressing or laundering someone else's dense prose, including
+through Codocu itself.
+
+**The gate.** Every spec and plan carries one line in its self-review:
+*"Reader test: where would the intended reader get lost or bored? — named
+and fixed."* Manual validation of any prose change checks the same. A
+principle with no forced moment of checking decays; this is that moment.
+
 ## Where things live
 
 - **Skills:** `skills/<name>/SKILL.md`, one directory per skill. The `name`
@@ -15,11 +35,12 @@ runtime.
 - **Templates** copied verbatim by skills: `templates/`.
 - **Roadmap / TODO:** `docs/todo.md` — all roadmap, TODO, and tech-debt
   entries go here.
-- **Design spec:** `docs/superpowers/specs/2026-05-14-codocu-design.md` — the
-  authoritative description of intended behavior. Read it before changing skill
-  semantics. This path is transitional: these spec/plan files are fleeting
-  scaffolding and will be migrated into Codocu's own docs structure as the
-  plugin dogfoods itself (see the "Meta" item in `docs/todo.md`).
+- **Design:** `docs/design/` — the authoritative aspect specs
+  ([`principles`](docs/design/principles.md), [`voice`](docs/design/voice.md),
+  [`flows`](docs/design/flows.md),
+  [`doc-standard`](docs/design/doc-standard.md)). Read the relevant one before
+  changing skill semantics. The superseded dated specs/plans are kept as
+  history in `docs/archive/`.
 
 ## Skill-authoring conventions
 

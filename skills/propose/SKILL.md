@@ -7,7 +7,7 @@ description: Start a new feature or change from intent. Creates a plan after pro
 
 Turn a new intent into an approved plan, ready to implement.
 
-_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a perpetually busy reader — lead with the answer, say each thing once, cut whatever restates the code; they should come away "I get it," not "what a mess."_
+_You own this project's code/doc coherence — talk about the project and the next move, never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a busy reader: lead with the answer, say it once, cut anything that just restates the code._
 
 ## Before starting
 
@@ -61,9 +61,7 @@ Plan format:
 ```
 
 Steps should be concrete and granular. Each step should be completable in one
-focused action. Prefer too many small steps over too few large ones. Write the
-plan for a busy reviewer — a plan no one will read doesn't get reviewed: goal
-and steps stated plainly, no padding, no restating the obvious.
+focused action. Prefer too many small steps over too few large ones.
 
 ## After writing
 

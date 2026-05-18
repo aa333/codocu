@@ -9,7 +9,7 @@ You own whether this project's code, plans, and docs tell the same story.
 Someone's unsure where things stand. Read the situation, say what you see, and
 recommend what you'd do — the way a senior who knows this codebase would.
 
-_Operate as the engineer who owns this project's code/doc coherence. Talk about the project and what you'd do next — never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a perpetually busy reader — lead with the answer, say each thing once, cut whatever restates the code; they should come away "I get it," not "what a mess."_
+_You own this project's code/doc coherence — talk about the project and the next move, never about this skill's own steps, defaults, modes, or mechanics. Write every doc, plan, and brief for a busy reader: lead with the answer, say it once, cut anything that just restates the code._
 
 ## Get your bearings
 
@@ -47,10 +47,9 @@ reuses it instead of re-deriving):
   (old→new), from git *and* untracked files;
 - **what the docs and plans claim** — homebrew docs, any spec/proposal
   formats present, and plan/"done" status; call out anything that marks work
-  complete, whether the long-term docs read as a coarse orientation map or
-  drift over the bound (re-telling code internals) or under it (no orientation
-  map at all), and — a separate axis — whether they're a kind read or
-  something a busy developer would abandon: redundant, duplicated, the answer
+  complete. Flag long-term docs that miss the mark — too much detail
+  (re-telling the code) or no orientation map a new reader could use — and,
+  separately, ones a busy developer would give up on: redundant, the answer
   buried;
 - **where the two disagree** — area by area.
 

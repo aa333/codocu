@@ -1,3 +1,18 @@
+# Tuning Registry — DEFERRED (parked 2026-05-17)
+
+Parked, not adopted. The dial-registry idea is sound — developer-time
+behavioral knobs with a defined path from a setting to the skill text that
+expresses it — but this execution is not. The handles are opaque, there is
+no operable flow for how an edit here propagates into the skills, and in use
+it was unworkable ("no idea how to work with it"). It also added exactly the
+meta-indirection layer the clarity principle (`CLAUDE.md` §First principle)
+exists to remove.
+
+Revisit with a real design — see the `docs/todo.md` entry. The original
+content is preserved below verbatim.
+
+---
+
 # Codocu — Behavioral Tuning Registry
 
 Developer-facing. **Not read at runtime.** The skill prose is the source of

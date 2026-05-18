@@ -67,9 +67,9 @@ shaped, not SDD):
 
 - **Docs structure** <- granularity answer. Default: module-level
   `docs/actual/`, decompose on demand. State that long-term docs follow the
-  project's going-forward doc standard — **reference** the WHAT-summary bound
-  (the design spec / `code-doc` / `fold`); do not restate it here.
-  `codocu.md` carries conventions, not the bound's definition.
+  project's going-forward doc standard — point to where it's defined (the
+  codocu skill's `references/doc-standard.md`); don't restate it in
+  `codocu.md`, which carries conventions, not the standard's definition.
 - **What else to document** <- Q2. Default: `docs/tech-debt-todo.md`,
   `TD-XXXX` codes cross-linked from inline `// TODO TD-XXXX` comments.
 - **Fold settings** <- Q3. Default: ask per incomplete item.
