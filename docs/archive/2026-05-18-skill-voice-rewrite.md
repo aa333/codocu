@@ -4,7 +4,7 @@
 
 ## Goal
 
-Rewrite every skill's prose for the Codocu voice (plain, Feynman, co-owner)
+Rewrite every skill's prose for the Codocu voice
 and trim mechanical bloat, without changing skill semantics. This plan exists
 because the work was tracked as a loose checklist in `docs/todo.md` with every
 box unticked even though it had shipped — a live instance of the
@@ -31,10 +31,10 @@ voice and improve efficiency"); line counts are that commit's diff:
 
 Open:
 
-- [ ] Final polish pass — uncommitted working-tree tweaks
+- [x] Final polish pass — uncommitted working-tree tweaks
       (`docs/design/voice.md` +4 lines; 7 skills, 1–2 lines each). Review and
       commit as the close of this cycle.
-- [ ] `:fold` this plan once the polish is committed; set `codocu.md` sync
+- [x] `:fold` this plan once the polish is committed; set `codocu.md` sync
       state honestly (it currently claims "Synced" while this cycle is open).
 
 ## Notes

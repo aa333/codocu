@@ -45,7 +45,7 @@ the end, only when the owner asks.
 - [x] III.1 `docs/design/principles.md` — runtime-facing; what Codocu
   believes (rebuilt from understanding, not laundered).
 - [x] III.2 `docs/design/voice.md` — senior-partner persona, anti-leak, the
-  reader/Feynman standard.
+  reader/Alan Watts standard.
 - [x] III.3 `docs/design/flows.md` — states, moves, gates; onboarding folds
   in.
 - [x] III.4 `docs/design/doc-standard.md` — evergreen; the consolidation
