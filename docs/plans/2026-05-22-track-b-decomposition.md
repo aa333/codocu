@@ -48,9 +48,10 @@ doesn't rot. Never runtime.
 
 ## The five sub-projects
 
-- **B-extract (foundational, first).** Hand-distill the Neph corpus into the four
-  assets above. Feeds every other sub-project; its assets are the source the
-  reviewer and writer derive from rather than invent.
+- **B-extract (foundational, first). ✅ Done 2026-05-23 (`91d5b97`).** Hand-distilled
+  the Neph corpus into the four assets (+ a notes file) in `docs/corpus/`. Feeds
+  every other sub-project; its assets are the source the reviewer and writer
+  derive from rather than invent.
 - **B-core — the base `/codocu` skill.** One flexible, principles-based skill;
   flows become optional reference overlays. Reworks the always-on orientation
   requirement (orient only when the task needs fresh state). **Two modes of one

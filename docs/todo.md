@@ -8,7 +8,7 @@ Docs quality of v0.1 is not sufficient. Flows were deemed rigid and redundant.
 Active outline: [`docs/plans/2026-05-22-v0.2-plan.md`](plans/2026-05-22-v0.2-plan.md).
 
 - Skills for reviewer subagents. Strict, rigid flows, at least Sonnet-viable, launched by main agent to verify doc standards against simple rules.
-- Metadocu pass - review Neph's live docs in sibling repo (../neph), especially docs/access.md and docs/chat-unions.md, and related code files. Reason what we can learn and extract from that as principle/standard improvements, and what can we use for voice and doc template examples. 
+
 
 ## Backlog
 

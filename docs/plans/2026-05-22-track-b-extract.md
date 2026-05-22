@@ -1,8 +1,18 @@
 # B-extract — Corpus Distillation — Spec
 
-> Status: design approved in brainstorming 2026-05-22, awaiting owner review.
-> Sub-project of Track B (see `2026-05-22-track-b-decomposition.md`). Execution
-> is intended for a fresh session; this spec carries the context.
+> Status: ✅ executed 2026-05-23, committed in `91d5b97`. Sub-project of Track B
+> (see `2026-05-22-track-b-decomposition.md`).
+>
+> **Execution outcome.** Five files in `docs/corpus/`: `smell-catalog.md` (6
+> smells; `leaks-changeable-implementation` kept as a deliberate un-graded entry),
+> `voice-pairs.md` (3 pairs), `placement-rules.md` (9 rules), `eval-fixtures.md`
+> (6 must-flag · 3 must-produce · 9 must-NOT-flag), plus `improvement-notes.md`
+> (scope-guard parking lot, now empty). Deviations from this spec, all recorded in
+> the assets' `Not yet distilled` sections: fixtures gained a per-fixture
+> `Context:` line (cold review showed placement is unjudgeable without the host
+> doc); `missing-is-definition`, `untracked-impl-limitation`, and the
+> `code-structure` voice pair were demoted as too thin or unverifiable. Validated
+> by four cold-reader passes, one per asset.
 
 **Goal:** Hand-distill the Neph labelled corpus into four committed assets in
 `docs/corpus/` that the v0.2 reviewer and writer skills derive from. One-way,
