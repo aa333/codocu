@@ -1,12 +1,16 @@
 # Codocu
 
-**COde-as-a-DOCUment** — an LLM-agent workflow kit that keeps code, short-term
+**COde-as-a-DOCUmentation** — an LLM-agent workflow kit that keeps code, short-term
 plans, and long-term documentation coherent through an explicit lifecycle.
 Delivered as a Claude Code plugin.
 
 **Core bet:** well-written code is already the most detailed spec possible.
 Documentation supplements it — it does not translate it. The differentiator is
 lightweight, bidirectional sync between code and docs.
+
+Codocu distinguishes code from docs. Beyond that, it has no built-in
+knowledge of any spec template, proposal format, or doc convention, only some opinions 
+seeded on init. You may customize them using `codocu.md` file in repo root.
 
 ## Who it's for
 

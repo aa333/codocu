@@ -8,6 +8,11 @@ of every /codocu invocation. Edit freely. -->
 
 ## Docs structure
 
+## Breadcrumb marker
+
+<!-- The greppable one-liner a code file uses to point back at a doc, so a
+single search finds them all. Pick a form, e.g. `System doc: <path>`. -->
+
 ## What else to document
 
 ## Fold settings

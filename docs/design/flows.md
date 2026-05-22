@@ -1,3 +1,4 @@
+// deprecate?
 # Codocu — Flows
 
 What Codocu does: the states it reasons about, the moves between them, and

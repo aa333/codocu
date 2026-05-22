@@ -18,12 +18,13 @@ is the source of truth**; docs orient, they never drive runtime behavior.
 
 **Evergreen docs — the orientation map**
 
-- `docs/design/` — the four authoritative aspect specs, each short and
+- `docs/design/` — the authoritative aspect specs, each short and
   single-purpose: [`principles`](docs/design/principles.md) (what Codocu
-  believes), [`voice`](docs/design/voice.md) (who the agent is),
-  [`flows`](docs/design/flows.md) (states, moves, gates),
-  [`doc-standard`](docs/design/doc-standard.md) (what a long-term doc is).
-  Read the relevant one before changing skill semantics.
+  believes), [`voice`](docs/design/voice.md) (who the agent is and how it
+  talks), [`doc-standard`](docs/design/doc-standard.md) (the rules for a good
+  auxiliary doc). Read the relevant one before changing skill semantics. (The
+  old `flows` spec is being reworked in v0.2 — flow overlays become optional
+  helpers, not a standing authority.)
 - `CLAUDE.md` §First principle — the dev-facing constitution; the same idea
   as `principles.md`, for the contributor at work.
 - `docs/inbox/` - long-term docs not yet processed by codocu (e.g. produced by other agents with their preferred context level and tone). These are in-between fleeting and long-term, and should not be committed unless marked explicitly for deferred processing.
@@ -33,17 +34,18 @@ is the source of truth**; docs orient, they never drive runtime behavior.
 - `docs/todo.md` — the single home for all roadmap, TODO, and tech-debt records
 format: 
 ```
-**TD-short-id**
-Todo record's short summary. What is wrong, what needs to be done
+## version
+### item title
+Item description, 1-2 paragraphs, short
 ```
-Short id, not numbers, to avoid clashing. Where acceptable, leave cross-references in code and docs to these records. 
+
 
 **Active specs & plans**
 
 - `docs/plans/` — dated working specs and implementation plans for in-flight
-  work (`YYYY-MM-DD-{topic}.md`), the same location the Codocu skills
-  (`propose`, `apply`, `code-doc`, `doc-code`) read and write. Empty between
-  cycles.
+  work (`YYYY-MM-DD-{topic}.md`), the location Codocu skills read and write.
+  (The v0.1 skill set is being reworked in v0.2 — see
+  `docs/plans/2026-05-22-v0.2-plan.md`.) Empty between cycles.
 
 **History**
 

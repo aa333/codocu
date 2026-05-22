@@ -1,27 +1,29 @@
 # Codocu TODO
 
-Roadmap, TODO, and tech-debt records. Format per `codocu.md` §Roadmap:
-`**TD-short-id**` header, then a short summary of what is wrong / what to do.
+Roadmap and TODO
 Active in-flight work lives in `docs/plans/`, not here.
 
 ## 0.2.0
+Docs quality of v0.1 is not sufficient. Flows were deemed rigid and redundant.
+Active outline: [`docs/plans/2026-05-22-v0.2-plan.md`](plans/2026-05-22-v0.2-plan.md).
+
+- Skills for reviewer subagents. Strict, rigid flows, at least Sonnet-viable, launched by main agent to verify doc standards against simple rules.
+- Metadocu pass - review Neph's live docs in sibling repo (../neph), especially docs/access.md and docs/chat-unions.md, and related code files. Reason what we can learn and extract from that as principle/standard improvements, and what can we use for voice and doc template examples. 
+
+## Backlog
+
+**TD-corpus-enrichment-skill**
+A skill that expands/enriches the `docs/corpus/` assets (smell catalog, voice
+pairs, placement rules, eval fixtures) from new or updated METADOCU-narrated
+sources. The v0.2 B-extract pass distills the corpus by hand; this automates the
+later regeneration. Ties to the "scriptable later" pipeline note in
+`docs/plans/2026-05-22-track-b-decomposition.md` and overlaps Track C.
 
 **TD-router-skill-summary-format**
 Check if the router skill needs a format template when handed a summary.
 
-**TD-doc-first-reframe**
-Consider reframing Codocu as a doc-first agent that delegates planning and
-coding to specialist skills, rather than owning the full spec→plan→code loop.
-`doc-code` sync is sound in theory but won't replace dev specialists; we need
-a way to compose skills. Direction:
-- `codocu.md` enforced-read via CLAUDE.md — short, strong doc-writing rules (done)
-- use specialist skills (superpowers, openspec, etc.) to make/implement plans
-- verify Codocu standards post-implementation via hooks or CLAUDE.md clauses
-- fold as needed; process inbox during fold
-- keep `propose`/`doc-code`/`apply` but less prominent — other tools do
-  spec→plan→code better
-
-## Future
+**TD-autoconstruct-skill-prompts**
+Centralized voice control and replace, for example. Overlaps a lot with TD-tuning-redesign
 
 **TD-marketplace-manifest**
 No `.claude-plugin/marketplace.json` exists, so the plugin can only be loaded

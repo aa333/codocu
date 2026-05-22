@@ -37,10 +37,10 @@ principle with no forced moment of checking decays; this is that moment.
   entries go here.
 - **Design:** `docs/design/` — the authoritative aspect specs
   ([`principles`](docs/design/principles.md), [`voice`](docs/design/voice.md),
-  [`flows`](docs/design/flows.md),
   [`doc-standard`](docs/design/doc-standard.md)). Read the relevant one before
-  changing skill semantics. The superseded dated specs/plans are kept as
-  history in `docs/archive/`.
+  changing skill semantics. (The old `flows` spec is being reworked in v0.2;
+  flow overlays become optional helpers.) The superseded dated specs/plans are
+  kept as history in `docs/archive/`.
 
 ## Skill-authoring conventions
 
