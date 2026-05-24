@@ -63,7 +63,9 @@ Default scope is affected docs + immediate neighbors (docs cross-linked with the
 
 ### Place
 
-Decide where a doc lives. Five options per `placement-rules.md`:
+First, decide whether documentation is warranted at all. If the change is trivial or carried by self-explanatory code (a rename, a small refactor, a bug fix the code already explains), the answer is *no doc needed* — return that and stop. Apply this gate to every Place call.
+
+If a doc is warranted, decide where it lives. Five options per `placement-rules.md`:
 
 - **New doc.** A subsystem, flow, or convention with no single anchor needs its own system doc under `docs/`.
 - **Fold into existing.** The content is about an existing documented system; absorb it into that system's doc.
