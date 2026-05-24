@@ -1,7 +1,7 @@
 {
   "name": "codocu",
-  "description": "Keep code, plans, and docs coherent. Propose, implement, and fold changes through an explicit lifecycle.",
-  "version": "0.1.0",
+  "description": "Keep code and documentation coherent. A doc-first quality keeper that writes, reviews, and maintains the docs that complement your code.",
+  "version": "0.2.0",
   "license": "MIT",
-  "keywords": ["docs", "plans", "workflow", "sync", "spec"]
+  "keywords": ["docs", "documentation", "quality", "workflow"]
 }
