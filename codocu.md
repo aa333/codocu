@@ -20,9 +20,7 @@ is the source of truth**; docs orient, they never drive runtime behavior.
   single-purpose: [`principles`](docs/design/principles.md) (what Codocu
   believes), [`voice`](docs/design/voice.md) (who the agent is and how it
   talks), [`doc-standard`](docs/design/doc-standard.md) (the rules for a good
-  auxiliary doc). Read the relevant one before changing skill semantics. (The
-  old `flows` spec is being reworked in v0.2 — flow overlays become optional
-  helpers, not a standing authority.)
+  auxiliary doc). Read the relevant one before changing skill semantics. 
 - `CLAUDE.md` §First principle — the dev-facing constitution; the same idea
   as `principles.md`, for the contributor at work.
 - `docs/inbox/` - long-term docs not yet processed by codocu (e.g. produced by other agents with their preferred context level and tone). These are in-between fleeting and long-term, and should not be committed unless marked explicitly for deferred processing.

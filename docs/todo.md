@@ -7,7 +7,7 @@ Active in-flight work lives in `docs/plans/`, not here.
 Docs quality of v0.1 is not sufficient. Flows were deemed rigid and redundant.
 Active outline: [`docs/plans/2026-05-22-v0.2-plan.md`](plans/2026-05-22-v0.2-plan.md).
 
-- Skills for reviewer subagents. Strict, rigid flows, at least Sonnet-viable, launched by main agent to verify doc standards against simple rules.
+**Package corpus with skill to fully emulate local plugin**
 
 
 ## Backlog
@@ -43,15 +43,6 @@ sole source of truth for behavior.
 `/codocu:status` — diagnostic that shows the state of all plans (active,
 stalled, nearly complete), surfaces obvious desyncs, and suggests the next
 action. Possible home for an auto-fold prompt.
-
-**TD-fold-autotrigger**
-`:fold` is currently suggested at the end of flows that produced a plan, never
-forced. Revisit whether to auto-trigger it or tie it to a commit hook during
-plugin stabilization.
-
-**TD-codocu-drift-detection**
-If the user renames folders, `codocu.md` paths go stale. No mechanism defined.
-Candidate: a `codocu:init --check` validation step or a `:status` sub-check.
 
 **TD-richer-git-tooling**
 Current git advisory is binary (md-only / code-only / both). Real git tooling

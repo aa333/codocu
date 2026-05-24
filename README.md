@@ -1,74 +1,56 @@
 # Codocu
 
-**COde-as-a-DOCUmentation** — an LLM-agent workflow kit that keeps code, short-term
-plans, and long-term documentation coherent through an explicit lifecycle.
-Delivered as a Claude Code plugin.
+**COde-as-a-DOCUmentation** — a Claude Code plugin that keeps a project's
+documentation aligned with its code.
 
-**Core bet:** well-written code is already the most detailed spec possible.
-Documentation supplements it — it does not translate it. The differentiator is
-lightweight, bidirectional sync between code and docs.
+**Core bet:** well-written code is already the most detailed spec a project
+will ever have. Auxiliary docs (everything outside code) carry what code
+structurally can't — why a thing exists, what's coming, the cross-file
+picture. They never reword what the code already says.
 
-Codocu distinguishes code from docs. Beyond that, it has no built-in
-knowledge of any spec template, proposal format, or doc convention, only some opinions 
-seeded on init. You may customize them using `codocu.md` file in repo root.
+Codocu is a doc-first quality keeper for that auxiliary layer: it writes new
+docs, fixes existing ones, places them where they belong, and verifies their
+claims against current code.
 
 ## Who it's for
 
 IT-first builders: solo developers, small technical teams, and technical
-founders who want to ship maintainable software without drowning in process or
-doc overhead.
+founders who want to ship maintainable software without drowning in doc
+overhead. Codocu operates at the single-project level. Out of scope:
+system-of-systems architecture, cross-team API contracts, stakeholder PRDs.
 
-Codocu operates at the single-project level. Its job is keeping a project's
-*what was / what is / what will be / why* coherent with its code.
+## What it does
 
-**Out of scope:** system-of-systems architecture, cross-team API contracts,
-stakeholder PRDs, infrastructure specs. Codocu docs may reference these, but
-Codocu does not manage them.
+Three skills, composed by the agent per the user's ask:
 
-## How it works
-
-Codocu tracks the project as being in one of three states:
-
-| State | Meaning |
+| Skill | Use |
 |---|---|
-| **Synced** | Code and long-term docs represent the same reality. Active plans may exist (planned future work is not a desync). Tests pass. |
-| **Desynced** | One side changed; the other is internally coherent. Directional sync is possible once a source of truth is chosen. |
-| **Dirty** | Both sides in motion or contradictory. Iterative resolution with the user. Normal during active development. |
+| `/codocu` | The main skill. Writes, reviews, places, and verifies docs against the project's conventions. Use for any doc work — checking quality, updating after code changes, planning a doc-system change, verifying tech-debt records still match reality. |
+| `/codocu:fold` | Close out completed plans. Verifies what shipped against code and git history, archives the plan, folds any `docs/inbox/` drafts. |
+| `/codocu:init` | Scaffold `codocu.md` (the project's doc conventions file) and wire it into `CLAUDE.md` so every session loads it. Run once per project. |
 
-The state lives on the first line of `codocu.md` (a free-form meta-doc at the
-project root, created by `:init`) so any new session orients instantly.
-
-You drive the lifecycle with these commands:
-
-| Command | What it does |
-|---|---|
-| `/codocu:init` | Create `codocu.md` with sensible defaults. Safe to re-run. |
-| `/codocu:propose` | Fresh intent → proposal → plan → implement → fold. |
-| `/codocu:doc-code` | Docs describe the desired state → plan → implement in code. |
-| `/codocu:code-doc` | Code is the truth → update docs (auto for small deltas). |
-| `/codocu:apply` | Resume an existing or hand-written plan. |
-| `/codocu:fold` | Verify and archive completed plans (alias: `:sync`). |
-| `/codocu` | Orient — read signals, show what changed, produce a resolution plan. The nominal entry point when unsure. |
-
-`codocu.md` is free-form natural language: it defines doc locations, fold
-behavior, and any project-specific conventions. The agent reads it at the start
-of every invocation. It is not itself subject to sync tracking.
+`codocu.md` is a free-form natural-language file at the project root. It
+defines where docs live, how breadcrumbs are written, and any project-specific
+conventions. Edit it freely.
 
 ## Install & use
 
-There is no marketplace listing yet. Install the plugin in development mode by
-pointing Claude Code at this repo:
+Marketplace publishing is planned. For now, install in development mode:
 
 ```
 claude --plugin-dir <path to this repo>
 ```
 
-Then run `/codocu:init` in your project to get started. After pulling new
-changes, run `/reload-plugins`.
+Then in your project:
+
+```
+/codocu:init
+```
+
+After pulling new changes to this repo, run `/reload-plugins`.
 
 Do **not** copy the `skills/` folder into a project — see
-[CONTRIBUTING.md](CONTRIBUTING.md) for why. Marketplace publishing is planned
-(see [docs/todo.md](docs/todo.md)).
+[CONTRIBUTING.md](CONTRIBUTING.md) for why.
 
 ## Contributing
 
@@ -76,13 +58,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for local development and testing.
 
 ## Prior art
 
-Codocu builds on established ideas rather than claiming to invent code-centric
-documentation: **OpenSpec** (direct workflow ancestor — propose → apply →
-archive), **Living Documentation** (Martraire, 2019), **literate programming**
-(Codocu draws the inverted lesson — code stands alone, prose supplements), and
-**BDD/executable specs** (composable; tests are the machine-verifiable layer).
-Codocu's divergence: code is a co-equal source of truth, not a side effect of
-specs.
+Codocu builds on established ideas rather than claiming to invent
+code-centric documentation: **Living Documentation** (Martraire, 2019),
+**literate programming** (Codocu draws the inverted lesson — code stands
+alone, prose supplements), and **BDD/executable specs** (composable; tests
+are the machine-verifiable layer). Codocu's divergence: code is a co-equal
+source of truth, and auxiliary docs are deliberately scoped to what code
+can't carry.
 
 ## License
 
