@@ -210,3 +210,14 @@ So the procedural ceremony was cut:
   conventions list in fold's SKILL.md depends on it.
 
 The next smoke test runs against the lighter skill.
+
+## Lighter-skill smoke test — 2026-05-24
+
+Ran `/codocu:fold` end-to-end against the live `docs/plans/` set (eight plans).
+Skill loaded `codocu.md`, classified each plan against code and shipped commits,
+correctly held the b-core pair and fold-design itself on outstanding validation,
+held the v0.2 outline and track-b decomposition as parents of open work, and
+surfaced the scope-guard discrepancy on track-b-extract for owner decision before
+archive. Owner approved archive of track-a-methodology, track-b-extract, and
+b-core-seeds; deferred the b-core pair. This session also serves as fold's own
+end-to-end validation — closing the deferred smoke test.

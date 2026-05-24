@@ -1,7 +1,5 @@
 # Codocu
 
-> Codocu sync state: Synced
-
 ## Docs structure
 
 This repo *is* the plugin, so "code" and "docs" map onto plugin assets. **Code
@@ -39,7 +37,6 @@ format:
 Item description, 1-2 paragraphs, short
 ```
 
-
 **Active specs & plans**
 
 - `docs/plans/` — dated working specs and implementation plans for in-flight
@@ -58,6 +55,8 @@ Item description, 1-2 paragraphs, short
   provenance.
 - `testing/` — long-term test reports (deliberately outside `docs/` — test
   evidence, not documentation); suites are dated directories.
+
+Note that even though skill files are considered "code" in this repo, we do not leave inline documentation in them (except required by claude), as it will create noise and confusion in consumer agents. No breadcrumbs, no pointers.
 
 ## Subagent guidelines
 
