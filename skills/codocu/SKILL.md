@@ -10,14 +10,14 @@ description: Keep the repo's docs aligned with Codocu's standards — write new 
 
 ## On invocation, load
 
-Before doing anything else, read these from the plugin's repo:
+Before doing anything else, read these from this skill's `references/` directory:
 
-- `docs/design/principles.md` — the three core beliefs.
-- `docs/design/doc-standard.md` — the rules for a good auxiliary doc.
-- `docs/design/voice.md` — voice and tone (you've already absorbed the anchor above; this is the full spec).
-- `docs/corpus/placement-rules.md` — where docs live and why.
-- `docs/corpus/voice-pairs.md` — before/after examples for voice (dense → plain).
-- `docs/corpus/smell-catalog.md` — named anti-patterns with fixes.
+- `references/principles.md` — the three core beliefs.
+- `references/doc-standard.md` — the rules for a good auxiliary doc.
+- `references/voice.md` — voice and tone (you've already absorbed the anchor above; this is the full spec).
+- `references/placement-rules.md` — where docs live and why.
+- `references/voice-pairs.md` — before/after examples for voice (dense → plain).
+- `references/smell-catalog.md` — named anti-patterns with fixes.
 
 Then read the target repo's `codocu.md` if it exists. It carries the project's local conventions and overrides defaults.
 

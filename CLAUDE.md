@@ -35,11 +35,15 @@ principle with no forced moment of checking decays; this is that moment.
 - **Templates** copied verbatim by skills: `templates/`.
 - **Roadmap / TODO:** `docs/todo.md` — all roadmap, TODO, and tech-debt
   entries go here.
-- **Design:** `docs/design/` — the authoritative aspect specs
-  ([`principles`](docs/design/principles.md), [`voice`](docs/design/voice.md),
-  [`doc-standard`](docs/design/doc-standard.md)). Read the relevant one before
-  changing skill semantics. The superseded dated specs/plans are kept as
-  history in `docs/archive/`.
+- **Design:** `skills/codocu/references/` — the authoritative aspect specs
+  ([`principles`](skills/codocu/references/principles.md),
+  [`voice`](skills/codocu/references/voice.md),
+  [`doc-standard`](skills/codocu/references/doc-standard.md)). Read the
+  relevant one before changing skill semantics. These live inside the codocu
+  skill so they're reachable at install time; they're also the contributor
+  source of truth. The superseded dated specs/plans are kept as history in
+  `docs/archive/`. `docs/design/build-skill/` holds deferred Track C notes
+  (not loaded at runtime).
 
 ## Skill-authoring conventions
 

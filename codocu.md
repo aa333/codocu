@@ -8,19 +8,26 @@ is the source of truth**; docs orient, they never drive runtime behavior.
 **Code — the plugin itself**
 
 - `skills/<name>/SKILL.md` — one directory per skill; `name` = directory name
-  = the `/codocu:<name>` invocation suffix. Skill-only references live beside
-  it (a skill loads references from its own directory only).
-- `templates/` — files copied verbatim by skills (e.g. `templates/codocu.md`,
-  seeded into a target project at onboarding).
+  = the `/codocu:<name>` invocation suffix. Each skill's own assets live in
+  sibling subfolders so they're reachable at install time: `skills/codocu/references/`
+  carries the design + corpus the agent loads at runtime;
+  `skills/init/templates/` carries the files init drops into target repos.
+- `agents/` — plugin-level subagents (e.g. `codocu-reviewer`). Cross-reference
+  skill assets via the `skills/<name>/references/` path.
 - `.claude-plugin/plugin.json` — manifest; its `name` is the namespace prefix.
 
 **Evergreen docs — the orientation map**
 
-- `docs/design/` — the authoritative aspect specs, each short and
-  single-purpose: [`principles`](docs/design/principles.md) (what Codocu
-  believes), [`voice`](docs/design/voice.md) (who the agent is and how it
-  talks), [`doc-standard`](docs/design/doc-standard.md) (the rules for a good
-  auxiliary doc). Read the relevant one before changing skill semantics. 
+- `skills/codocu/references/` — the authoritative aspect specs (loaded by
+  `/codocu` at runtime, also the source of truth for contributors changing
+  skill semantics): [`principles`](skills/codocu/references/principles.md),
+  [`voice`](skills/codocu/references/voice.md),
+  [`doc-standard`](skills/codocu/references/doc-standard.md), plus the corpus
+  (`placement-rules.md`, `voice-pairs.md`, `smell-catalog.md`).
+- `docs/design/` — deferred design notes not loaded at runtime (currently
+  `build-skill/` for Track C).
+- `docs/corpus/` — non-runtime corpus material: `eval-fixtures.md` (test
+  inputs) and `improvement-notes.md` (parked ideas).
 - `CLAUDE.md` §First principle — the dev-facing constitution; the same idea
   as `principles.md`, for the contributor at work.
 - `docs/inbox/` - long-term docs not yet processed by codocu (e.g. produced by other agents with their preferred context level and tone). These are in-between fleeting and long-term, and should not be committed unless marked explicitly for deferred processing.

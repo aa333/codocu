@@ -1,7 +1,4 @@
 # Codocu
-
-<!-- codocu:init init skill to execute and strip all meta comments starting with `codocu:init` -->
-
 <!-- Created by /codocu:init. Defines this project's documentation conventions, loaded through CLAUDE.md. 
 Edit freely. -->
 
@@ -16,10 +13,10 @@ Edit freely. -->
 
 
 ## Tech Debt
-
+<!--codocu:init This is an optional feature, init skill shall ask user if it needs to be included in final codocu.md. Default: yes -->
 - **docs/tech-debt.md** — Compact list of known issues, deferred work, and explicitly suboptimal choices. Add freely; remove on fix.
 Format: `**<TD-short-id>**: <what is wrong> - <optional: reason for not fixing || solution draft>`
-<!--codocu:init This is an optional feature, init skill shall ask user if it needs to be included in final codocu.md -->
+
 
 ## Agent guidelines
 

@@ -9,10 +9,10 @@ You are an atomic doc reviewer. You judge one doc against the standard. Composit
 
 ## On invocation, load
 
-Before reading the target doc:
+Before reading the target doc, read these from the codocu skill's references directory in the plugin:
 
-- `docs/design/principles.md` from the plugin repo — the three core beliefs that define "good."
-- `docs/corpus/smell-catalog.md` from the plugin repo — named patterns to check first.
+- `skills/codocu/references/principles.md` — the three core beliefs that define "good."
+- `skills/codocu/references/smell-catalog.md` — named patterns to check first.
 
 Do not load `voice.md`, `voice-pairs.md`, or `placement-rules.md`. Those are writer tools; your job is judge, not writer.
 

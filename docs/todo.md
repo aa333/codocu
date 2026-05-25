@@ -8,9 +8,12 @@ Docs quality of v0.1 is not sufficient. Flows were deemed rigid and redundant.
 Active outline: [`docs/plans/2026-05-22-v0.2-plan.md`](plans/2026-05-22-v0.2-plan.md).
 
 **Package corpus with skill to fully emulate local plugin**
-
+when testing, CLAUDE does a lot of local file requests, I need to make it look more like a plugin to avoid accessing local docs and access stuff inside plugin-space instead. Maybe just copy stuff there for now
 
 ## Backlog
+
+**TD-init-not-offering-inlines**
+It's a lot of work, but init on a brownfield should offer inline docs (docstrings, module comments) as well after documentation. If there are >10 files, offer to create a plan for processing them  
 
 **TD-corpus-enrichment-skill**
 A skill that expands/enriches the `docs/corpus/` assets (smell catalog, voice
