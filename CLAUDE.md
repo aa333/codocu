@@ -32,7 +32,7 @@ principle with no forced moment of checking decays; this is that moment.
   suffix.
 - **Plugin manifest:** `.claude-plugin/plugin.json`. Its `name` is the namespace
   prefix.
-- **Templates** copied verbatim by skills: `templates/`.
+- **Templates** copied verbatim by skills: `skills/<name>/templates/` (e.g. `skills/init/templates/`).
 - **Roadmap / TODO:** `docs/todo.md` — all roadmap, TODO, and tech-debt
   entries go here.
 - **Design:** `skills/codocu/references/` — the authoritative aspect specs
@@ -51,8 +51,6 @@ principle with no forced moment of checking decays; this is that moment.
 - `description` states *when* to use the skill (the trigger), not just what it
   does.
 - Reference sibling skills as `/codocu:<name>`.
-- Skills that change sync state must update the `> Codocu sync state:` line in
-  the target project's `codocu.md` per the rules in the design spec.
 - Keep instructions imperative and step-numbered; many small steps over a few
   large ones.
 
