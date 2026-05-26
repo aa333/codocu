@@ -46,6 +46,30 @@ instance, use the matching fixture in `eval-fixtures.md`.
 - Fix: cut the restated part; describe the meaning, or phrase the condition in plain words ("…if it has any").
 - Source: neph bot_module.py §BotModule.help
 
+### enumerates-code-shape
+- Trigger: a doc lists files or directories in the system and what each one is for — a `tree`-shaped table with file → role.
+- Why: it transcribes a directory listing the reader can produce with `ls` or their IDE. A rename or reorg silently invalidates the table, and no breadcrumb sits in the renamed file to point at the doc.
+- Fix: drop the listing. If the convention itself is the point, state it in one sentence and let the reader confirm by looking. If one specific file is load-bearing, name it once where it matters, with rationale.
+- Source: 002 run, T2 `docs/systems/bot-architecture.md` §Modules
+
+### narrates-sequential-code
+- Trigger: a doc walks through a function's body as numbered steps that mirror the code's actual order ("first X, then Y, then Z").
+- Why: it's a second copy of the function in prose; reordering or merging branches silently falsifies the doc, and reading the function is faster than reading the paraphrase.
+- Fix: keep only the *why* of the ordering — what would break if the steps swapped. Cut the step-by-step recap.
+- Source: 002 run, T2 `docs/systems/bot-architecture.md` §Assembly (three-phase startup); T1 `docs/architecture.md` numbered `main()` walkthrough.
+
+### enum-recap
+- Trigger: a doc enumerates the variants of an enum, status field, or return type that the code already defines.
+- Why: the enum is the authoritative list; restating it creates a second source of truth that drifts the moment a variant is added, removed, or renamed.
+- Fix: name the enum once and let the reader follow it back. If one variant carries rationale the code can't, describe that variant's reason — not the whole list as a recap.
+- Source: 002 run, T2 `docs/systems/captcha-gate.md` §"How a join lands" (PASSED/FAILED/SKIPPED/ABORTED list).
+
+### behavior-assertion-as-prose
+- Trigger: a sentence describes what a function does in a form that could be a test assertion ("X flips Y to false", "X returns N if Z").
+- Why: it is the kind of behavior the code already proves; in a doc it is a second copy of the implicit test, and it drifts the moment behavior changes. The field test from `doc-standard.md` §2 ("could this sentence be a test assertion?") names this directly.
+- Fix: apply the field test. If yes, push the sentence down to a docstring on the function — or delete it. Keep only the *why* the behavior is the way it is.
+- Source: 002 run, T2 `docs/systems/chats-presence.md` ("`left_chat_member` flips `in_chat` to false"); `docs/systems/owner-commands.md` (various callback-effect sentences).
+
 ## Not yet distilled
 
 - `untracked-impl-limitation` (a "known limitations" entry that re-describes

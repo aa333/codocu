@@ -1,0 +1,10 @@
+{
+  "tg_token": "",
+  "bot_username": null,
+  "db": {"path": "simple_bot.db"},
+  "debug_chats": [],
+  "owner_ids": [],
+  "proxy": null,
+  "log_level": "INFO",
+  "captcha": {"challenge_time": 15}
+}

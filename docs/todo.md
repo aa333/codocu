@@ -7,8 +7,14 @@ Active in-flight work lives in `docs/plans/`, not here.
 Docs quality of v0.1 is not sufficient. Flows were deemed rigid and redundant.
 Active outline: [`docs/plans/2026-05-22-v0.2-plan.md`](plans/2026-05-22-v0.2-plan.md).
 
-**Package corpus with skill to fully emulate local plugin**
-when testing, CLAUDE does a lot of local file requests, I need to make it look more like a plugin to avoid accessing local docs and access stuff inside plugin-space instead. Maybe just copy stuff there for now
+**bobatler run produced a lot of inflated bloated documentation**
+Need to update skill to ensure document-less greenfield setup does not tempt the agent to restate code and come up with trivial bloated documentation. Test harness required, in progress
+
+**improve initial orientation of core skill**
+- search entrypoints
+- follow imports, track depth and files amount
+- do not read the whole codebase at once, especially if it's big. If it's more than 20 files, ask user if they want a plan and phases for documentation pass
+
 
 ## Backlog
 
@@ -71,3 +77,13 @@ a stable v1 plugin first.
 **TD-non-cc-integrations**
 Artifact spec and command semantics are integration-agnostic. JetBrains
 plugin, VS Code extension, or CLI wrapper are post-v1 possibilities.
+
+**TD-eval-identifier-counts**
+Eval metrics used to count how many fixture identifiers (functions, classes,
+upper-case constants) each produced doc mentioned — the transcription-density
+signal. Parked 2026-05-26 because doing it across both Python and TypeScript
+fixtures cleanly requires real ASTs for each language (the original Python-only
+version used `ast`, but extending to TS by regex is unreliable, and a per-language
+AST per fixture is enough scope to deserve its own design pass). Revive once
+the fixture roster is stable enough to justify the language-specific tooling
+investment.

@@ -82,7 +82,9 @@ Compose or modify doc content. References come in priority order:
 1. **Local refs first.** Other good docs in this repo — drawn on for voice cues, placement patterns, and conventions the project already lives by.
 2. **Shipped corpus samples.** When the repo has nothing to imitate, fall back to `placement-rules.md` and `voice-pairs.md`.
 
-Apply principles (always) + voice (always) + placement (always). After writing, run atomic review on the result per the post-write heuristic.
+Apply principles (always) + voice (always) + placement (always).
+
+**Atomic review is required after Write/edit.** Run it on every new doc and every substantive edit — any edit ≥5 lines, or any addition that introduces a new prose claim. The single narrow exception is a strictly isolated trivial edit: a typo, a one-line rename in a comment, a stale path. When in doubt, run the review.
 
 Inline docs (docstrings, comments) and small code-side bookkeeping (breadcrumbs, stale refs in comments) you apply directly. Substantive code-behavior changes go in the Report's code-edits section. See Runtime boundaries.
 
@@ -149,7 +151,6 @@ Discover scope (the tech-debt doc) → Verify-against-code → Report (per-entry
 
 ## Heuristics
 
-- **Post-write atomic review.** Run it after a new doc, a major edit, or several compounded small edits in the same pass. Skip for isolated trivial edits (a typo, a single line).
 - **Compositional review scope.** Affected docs + immediate neighbors by default. Widen by running Map doc graph first when the task scope is unclear.
 - **VCS in Discover scope.** When the user's ask is change-driven, use `git status` / `git diff` / `git log` to define the changeset before mapping to docs.
 - **Destructive actions narrate intent.** Before Delete/demote, state what's about to go and why. Plan mode catches it formally; narration catches it informally.

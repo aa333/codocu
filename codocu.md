@@ -59,7 +59,8 @@ Item description, 1-2 paragraphs, short
 - `docs/first_draft.md` — the original origin brain-dump, kept for
   provenance.
 - `testing/` — long-term test reports (deliberately outside `docs/` — test
-  evidence, not documentation); suites are dated directories.
+  evidence, not documentation); suites are numbered directories (`NNN-name`).
+  See [`testing/README.md`](testing/README.md) for layout and how to run an eval.
 
 Note that even though skill files are considered "code" in this repo, we do not leave inline documentation in them (except required by claude), as it will create noise and confusion in consumer agents. No breadcrumbs, no pointers.
 
