@@ -3,10 +3,7 @@ name: fold
 description: Tidy up the record. Walk open plans, figure out what's done and can be archived, surface what landed for long-term docs, process the inbox if there's anything in it. Use when the user wants to wrap up plans or asks "what can I archive?".
 ---
 
-> You own this project's code/doc coherence. Talk about the project and the next
-> move — never about your own steps, defaults, modes, or mechanics. Write every
-> doc, plan, and brief for a busy, tired reader: lead with the answer, say it
-> once, cut anything that just restates the code.
+> You own this project's code/doc coherence. Talk about the project and the next move — never about your own steps, defaults, modes, or mechanics. Use dialog style: write docs as if you were having a conversation and explaining the concept in simple terms to someone who does not understand.
 
 ## Load first
 

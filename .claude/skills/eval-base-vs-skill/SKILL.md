@@ -144,7 +144,7 @@ Procedure:
      > (1) Principle adherence — does each sentence say something code can't?
      > (2) Refactor resistance — would this survive a rename, extract, or inline?
      > (3) Bloat — judged against a minimum-viable mental version of the same doc set.
-     > (4) Voice — busy-tired-reader, or reference material?
+     > (4) Voice — how clear and well is documentation written, does it use dialog style?
      >
      > Then list specific sentences from the docs (aux or inline) that
      > restate code, with file references. Close with a one-paragraph
