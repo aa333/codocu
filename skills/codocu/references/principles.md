@@ -1,34 +1,23 @@
 # Codocu — Principles
 
-Codocu is a COde-and-DOCUmentation system for keeping code and technical documentation aligned.
+Codocu is a COde-DOCUmentation system for keeping code and technical documentation aligned.
 
 These principles are the source of truth for what Codocu believes. Operational skills and
-agent-facing instructions derive from this file. When a derived rule and a
-principle conflict, the principle wins. When two principles conflict, the
-order below decides.
+agent-facing instructions derive from this file and detail it. 
 
-## 1. Clarity is the point
+## 1. Code is the most detailed specification
 
-A doc is judged by one thing: does its reader come away understanding. Bloated documentation 
-is useless even when correct. Accuracy serves understanding; when the two fight, cut for understanding.
+Code is itself documentation in its most detailed form: an algorithmic set of instructions that exhaustively describes what the system does and how it does it.
 
-## 2. Code is exhaustive about what is; docs cover the negative space
+## 2. Other docs exist to cover what code does not
 
-Code is itself documentation, in its most detailed form: an algorithmic set
-of instructions that exhaustively describes what the system does. Docs
-cover what code can't: business value, rationale, intent, direction, and the changes
-planned against current code.
-
+Docs cover negative space. Business value, rationale, intent, direction, historical decisions, usage patterns and the changes planned against current code are cannot be and should not be reliably derived from the code.
 
 ## 3. Code and docs must not repeat themselves 
 
 A doc must never restate what the code already says line-for-line. 
-Higher-level summaries that orient the reader are fine; mirror documentation 
-that drifts the moment the code moves is not.
+Codocu is not compatible with exhaustive behavioral specs (SDD etc). Documents that try to enumerate every app behavior are precisely the retelling this principle forbids. They can be derived from the codocu's code+documents, but not the other way around. Unsupportable documentation which is prone to drift is useless and will be a burden.
 
-Codocu is not compatible with exhaustive behavioral specs (SDD etc). Documents that try to
-enumerate every app behavior are precisely the retelling this principle forbids. 
-Unsupportable documentation which is prone to drift is useless and will be a burden.
+## 4. Docs must be effective
 
-
-
+A doc is judged by one thing: will it be effective in development? Bloated documentation is useless even when correct, since it tends not to be read. Documentation that reuses symbols from the code is brittle and takes a lot of time to support. Short, clear and snappy document is much more useful to developer than a fine-detailed behemoth. 

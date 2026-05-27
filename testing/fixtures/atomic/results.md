@@ -113,7 +113,7 @@ report with conservative-bias correctly applied to the process-directive step
 steps (Steps 2–5, with file paths and line-number evidence), and **caught a
 real discrepancy on Step 6**: the plan's scope guard says principle and
 doc-standard files must not be touched during extraction, but commit `91d5b97`
-modifies `docs/design/principles.md`, `doc-standard.md`, and `voice.md`. The
+modifies `docs/design/principles.md`, `doc-standard.md`. The
 plan's status header does not declare this deviation.
 
 The prediction in the implementation plan was `foldable`. The verifier's

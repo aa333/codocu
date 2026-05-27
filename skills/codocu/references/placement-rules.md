@@ -18,8 +18,8 @@ Source: neph access.md §opening
 
 ### file-link-with-backlink
 Rule: a doc may name a code file when the file is stable, easy to relocate on refactor, and carries a backlink to the doc.
-Illustration (do not copy): access.md links `caps.py` for the full cap list; `caps.py` carries a `System doc:` breadcrumb back to access.md.
-Reasoning: the breadcrumb puts the doc in front of whoever changes the file, so co-change is guaranteed and the reference can't silently rot.
+Illustration (do not copy): access.md links `caps.py` for the full cap list; `caps.py` carries a `System doc:` backlink back to access.md.
+Reasoning: the backlink puts the doc in front of whoever changes the file, so co-change is guaranteed and the reference can't silently rot.
 Source: neph access.md §opening + caps.py module banner
 
 ### name-public-surface

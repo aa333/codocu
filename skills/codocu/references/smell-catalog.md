@@ -24,7 +24,7 @@ instance, use the matching fixture in `eval-fixtures.md`.
 ### unmaintainable-aggregation-list
 - Trigger: a doc aggregates per-component behavior into one list, but nothing links each source component back to the list.
 - Why: the list reads well as an overview, yet an editor changing one component has no way to know it exists, so it silently goes stale.
-- Fix: add a backlink (breadcrumb) from each source to the list and re-check those backlinks during routine review — or drop the list if the breadcrumbs can't be maintained.
+- Fix: add a backlink (backlink) from each source to the list and re-check those backlinks during routine review — or drop the list if the backlinks can't be maintained.
 - Source: neph chat-unions.md §"Merge semantics for known modules"
 
 ### doc-far-from-anchor
@@ -48,7 +48,7 @@ instance, use the matching fixture in `eval-fixtures.md`.
 
 ### enumerates-code-shape
 - Trigger: a doc lists files or directories in the system and what each one is for — a `tree`-shaped table with file → role.
-- Why: it transcribes a directory listing the reader can produce with `ls` or their IDE. A rename or reorg silently invalidates the table, and no breadcrumb sits in the renamed file to point at the doc.
+- Why: it transcribes a directory listing the reader can produce with `ls` or their IDE. A rename or reorg silently invalidates the table, and no backlink sits in the renamed file to point at the doc.
 - Fix: drop the listing. If the convention itself is the point, state it in one sentence and let the reader confirm by looking. If one specific file is load-bearing, name it once where it matters, with rationale.
 - Source: 002 run, T2 `docs/systems/bot-architecture.md` §Modules
 

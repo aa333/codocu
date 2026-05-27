@@ -1,9 +1,6 @@
 # Codocu — Doc Standard
 
-The rules for writing a good doc — auxiliary or internal (see the Dictionary
-below). Every rule grows from a single principle: [code is exhaustive about
-what is; docs cover the negative space](principles.md). Read this before
-writing or judging any doc.
+The rules for writing a good doc — auxiliary or internal (see the Dictionary below). Every rule grows from the [principles](principles.md).
 
 ## Dictionary
 
@@ -28,99 +25,63 @@ by scope:
 - **Module** — one module → the module or file header.
 - **System** — a subsystem, flow, or convention with no single anchor → a
   system doc under `docs/`.
-- **Outside** — the whole repo, for outside readers → a generated artifact
-  (API reference, command index), never hand-written. Hand-written reference
-  drifts the moment the code moves.
 
-### Breadcrumbs
+Out of Codocu scope, but a fair target to mentally place some docs or offer the user as a solution
+- **Outside** — External sources, business-oriented documentation engines, public documentation (e.g. API reference). Might be generated from code+technical documentation
 
-A doc that points out at code rots silently — the person changing the code
-never sees the doc, so they never know to update it. Flip the arrow: leave
-a one-line breadcrumb in the load-bearing code file pointing back at the
-doc. The next editor sees it in their working context and remembers the doc
-exists.
+Good test: Who's the consumer of this documentation piece and where can they most reliably find it?
+- Working agent/coder who needs to know about system quirk/todo/debt should stumble upon relevant info organically while editing code
+- Working agent who edits code should find the backlink and update documentation if needed
+- Onboarding/Returning coder will look for short summaries at system aux docs, and then for docstrings of code entities 
+- Architecture reviewer will look for decisions and future plans in aux docs
 
-Use one consistent, greppable marker so a single search lists every breadcrumb
-in the repo. The exact form is a project choice — record it in `codocu.md`.
+Good: "How to create a new submodule" section placed in parent module's docstring or in aux doc dedicated to parent module
+Good: Function quirks and usage patterns placed in function docstring
+Good: Property explanation placed in its docstring 
+Bad: Full class schema presented and explained in aux system doc 
+Bad: Property explained in aux system doc
+Bad: Design decision related to several functions placed in one of these function's docstrings
+ 
+## 2. Code references in aux docs must be complemented with backlinks in code
 
-Place the breadcrumb where someone working on this concept is most likely
-to land — the shared mechanism, the canonical implementation, the entry
-point. A handful of breadcrumbs across genuinely related files reinforces
-the link and is fine. A breadcrumb in *every* file that touches a convention
-is a smell: that convention wants to become a mechanism or a lint rule, and
-the doc should then reference that mechanism, carrying only the *why*.
+Doc that points out at code entities will rot silently — the person changing the code never sees the doc, so they never know to update it. Place one-line backlink in the load-bearing code file pointing back at the doc. The next editor sees it in their working context and remembers the doc exists.
 
-## 2. Say only what code can't
+Use one consistent, greppable marker so a single search lists every backlink in the repo. The exact form is a project choice — record it in `codocu.md`. Place the backlink where someone working on this concept is most likely to land — the shared mechanism, the canonical implementation of documented system, the entry module point.
 
-An auxiliary doc earns its space by carrying what code structurally cannot.
-The kinds of content that qualify. Here are some (not exhausting) examples:
+Good: Aux doc related to a global page is referenced in that page's main tsx file
+Bad: Aux doc related to a system is not referenced in any of that system's files
+Bad: Aux doc about basic conventions is referenced in a ton of files
 
-- why the subsystem exists — the force that made it necessary;
+## 3. Say only what code can't
+
+An auxiliary doc earns its space by carrying what code structurally cannot. Here are some (not exhausting) examples:
+
+- why the subsystem exists, what made it necessary;
 - decisions taken and rejected, with reasons (ADRs);
 - deliberate non-goals and accepted rough edges, so a reader can tell an
   intentional smell from a bug;
-- cross-module flow no single file owns;
 - conventions and agreements no type system enforces;
 - in-flight refactors and direction of travel, so a half-migrated repo
   doesn't read as broken;
-- the configuration surface — env vars, flags, constants, the ways the
+- the configuration surface — what are editable env vars, flags, constants, the ways the
   system is meant to be tuned and extended.
 
-The field test, run before every sentence:
+Note: Explicitly naming code entities outside their source is ok as long as they are truly accessible for someone other than developer. An api route, a user command, an editable config flag. Public surfaces get changed less frequently so they might be sparringly used
 
-> Could this sentence be a test assertion?
 
-If yes, it describes behavior — the code's job. Push it down to a docstring
-or delete it. An aux doc is not a behavioral spec; enumerating inputs,
-outputs, and cases is work the code already does, in more detail, without
-drifting.
+## 4. Short summaries are allowed as long as they use business language and do not contain code entity names
 
-### Naming public surfaces is fine
-
-A doc may name a public surface in a sentence — a route, a command, a flag
-— when it makes a point about why or how. It may not turn into a list of
-all the routes or all the commands. That's reference material, and
-reference material belongs in the Outside home, generated.
-
-## 3. Name code only when it won't drift out from under the doc
-
-The rule is co-change:
-
-> Name a specific code symbol only if it changes *together* with the doc,
-> or a breadcrumb guarantees the doc is in front of whoever changes that
-> symbol.
-
-That single test settles the cases:
-
-- An ADR sitting in `docs/` *may* name specific code, even though it's far
-  from that code — because the decision is about that code, and the
-  breadcrumb keeps them in sync.
-- A business summary *may* refuse to name code even when it sits right next
-  to it — being close doesn't oblige it to transcribe. The stable business
-  word reads better and survives refactors (rule 5).
-
-## 4. Summaries describe meaning, not symbols
-
-A short summary — a docstring especially — describes the *meaning* it
-governs, not the exact symbols underneath it. The test:
+A short summary — describes the *meaning* it governs, not the exact symbols underneath it. 
+The test:
 
 > If a variable or type here were renamed without changing behavior, would
 > this summary still read true?
+If no, it's transcribing, not summarizing. Rewrite it to the meaning. 
 
-If no, it's transcribing, not summarizing. Rewrite it to the meaning.
+Summaries of system structure and behaviors are welcomed when they are made on a higher abstraction level. They are not specifications, they bring value of quick onboarding into complex code. Occasional filenames for anchoring references are acceptable; full directory listings are not.
 
-- Not: "System objects list is `Set<string>`." Transcribes the type;
-  drifts the moment someone refactors it.
-- Better: "System objects are stored in a set to drop duplicate ingests."
-  States the meaning; survives the rename.
+Good: "System objects are stored in a set to drop duplicate ingests." - States the meaning; survives the rename. 
+Bad: "System objects list `SystemObjects` is typed as `Set<string>`." Transcribes the code, fragile
 
-Short summaries are wanted, not discouraged. Code is hard to read without
-them. The rule is not "write fewer" — it's "write them at the level of
-meaning."
 
-## 5. Prefer business words over code words
 
-When the same thing can be named in business terms or in code terms, use
-the business term. It reads better for the next person, and it survives
-refactors — the business concept outlives whatever implementation
-currently serves it.

@@ -19,28 +19,26 @@ Claude Code; that artifact is the calibration exemplar a generator must match.
 ## Source inputs used (the v0.2 hand-build)
 
 In load order — the order the hand-build read them, and the order a generator
-should consume them:
+should consume them. The aspect specs and most of the corpus now live under
+`skills/codocu/references/` so they're reachable at install time; only
+`eval-fixtures.md` stayed in `docs/corpus/` (graders, not runtime input):
 
-1. **`docs/design/principles.md`** — three core beliefs: clarity is the point;
-   code is exhaustive about what is, docs cover the negative space; code and
-   docs must not repeat themselves. Top of the truth hierarchy.
-2. **`docs/design/voice.md`** — persona contract. Includes the **house rule**
-   block (verbatim into every skill — see "meta-structure" below).
-3. **`docs/design/doc-standard.md`** — the rules for a good auxiliary doc;
-   dictionary of doc kinds; the four placement homes (symbol / module /
-   system / outside); breadcrumb mechanic.
-4. **`docs/corpus/smell-catalog.md`** — 6 named smells, each with Trigger /
-   Why / Fix. Sources cited to Neph.
-5. **`docs/corpus/voice-pairs.md`** — before/after few-shot for voice.
-6. **`docs/corpus/placement-rules.md`** — 9 placement rules with one
-   non-imitable illustration + reasoning each.
-7. **`docs/corpus/eval-fixtures.md`** — graders, not exemplars. The only
+1. **`skills/codocu/references/principles.md`** — three core beliefs: clarity
+   is the point; code is exhaustive about what is, docs cover the negative
+   space; code and docs must not repeat themselves. Top of the truth hierarchy.
+2. **`skills/codocu/references/doc-standard.md`** — the rules for a good
+   auxiliary doc; dictionary of doc kinds; the four placement homes (symbol /
+   module / system / outside); backlink mechanic.
+3. **`skills/codocu/references/smell-catalog.md`** — 10 named smells, each
+   with Trigger / Why / Fix. Sources cited to Neph.
+4. **`skills/codocu/references/placement-rules.md`** — 9 placement rules with
+   one non-imitable illustration + reasoning each.
+5. **`docs/corpus/eval-fixtures.md`** — graders, not exemplars. The only
    asset that carries raw labelled instances. Three kinds: must-flag,
    must-NOT-flag, must-produce.
-8. **`CLAUDE.md`** — repo-level conventions for working on Codocu itself.
-   Note: contains v0.1 stale text (sync-state rule) that B-cleanup will fix.
-9. **`codocu.md`** — repo-level doc structure declaration (where things
-   live, the breadcrumb marker the project uses, etc.). Always loaded at
+6. **`CLAUDE.md`** — repo-level conventions for working on Codocu itself.
+7. **`codocu.md`** — repo-level doc structure declaration (where things
+   live, the backlink marker the project uses, etc.). Always loaded at
    skill invocation in v0.2.
 
 ## Skill meta-structure (SKILL.md)
@@ -53,8 +51,6 @@ The B-core SKILL.md follows this shape, top-to-bottom. Order is load-bearing
 name: <invocation-suffix>          # = directory name = /codocu:<name>
 description: <when to use>          # not "what it does" — when to invoke
 ---
-
-> <voice anchor — verbatim from voice.md, the "house rule" block>
 
 ## On invocation, load
 - <design docs paths>
@@ -83,8 +79,6 @@ description: <when to use>          # not "what it does" — when to invoke
 - **Frontmatter `description`** describes *when* the user should invoke
   (the trigger), not what the skill does. This is the matcher signal for
   routing.
-- **Voice anchor** must be the verbatim house-rule paragraph from voice.md.
-  Do not paraphrase; this is the persona contract.
 - **Loading section** lists explicit paths; the agent runs Read on each at
   invocation. No magic, no `${PLUGIN_DIR}` (until the harness supports it —
   see Open Questions).
@@ -192,7 +186,7 @@ the user can't easily reverse, work outside the skill's competence) — not
 enforce an abstract clean separation between domains.
 
 Caught: B-core's first draft said "does not write code." Forced punting
-one-line breadcrumb additions and inline-doc edits to "a coding specialist,"
+one-line backlink additions and inline-doc edits to "a coding specialist,"
 adding friction every time. Corrected to: applies doc work + small adjacent
 code edits directly; substantive code-behavior changes still surface in the
 Report. Test the agent applies at runtime: "if a reasonable reviewer would
@@ -305,11 +299,12 @@ business shape.
 ## Provenance — where this file's content came from
 
 - Conversation 2026-05-23/24 (brainstorming → spec → plan → execute cycle).
-- Spec: `docs/plans/2026-05-24-b-core-design.md`.
-- Implementation plan: `docs/plans/2026-05-24-b-core-implementation.md`.
-- Hand-built artifacts: `skills/codocu/SKILL.md`,
+  The dated spec and implementation plan
+  (`docs/plans/2026-05-24-b-core-*.md`) and the matching smoke-test results
+  folder have since been folded; their content lives in the surviving
+  artifacts and in this file.
+- Surviving hand-built artifacts: `skills/codocu/SKILL.md`,
   `agents/codocu-reviewer.md`.
-- Smoke test record: `testing/fixtures-run-2026-05-24/results.md`.
 - Memory files (non-git-controlled, synthesized inline above):
   - `b-core-design.md` — architecture decisions, reviewer conservative-bias.
   - `feedback-no-negative-vocabulary-in-skills.md` — anti-pattern.

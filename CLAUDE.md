@@ -37,7 +37,6 @@ principle with no forced moment of checking decays; this is that moment.
   entries go here.
 - **Design:** `skills/codocu/references/` — the authoritative aspect specs
   ([`principles`](skills/codocu/references/principles.md),
-  [`voice`](skills/codocu/references/voice.md),
   [`doc-standard`](skills/codocu/references/doc-standard.md)). Read the
   relevant one before changing skill semantics. These live inside the codocu
   skill so they're reachable at install time; they're also the contributor

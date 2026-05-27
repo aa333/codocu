@@ -35,7 +35,7 @@ the anti-pattern. That is the failure this whole process is built to avoid.
 ## The method
 
 1. **Locate the labelled material.** Walk the source repo for `#METADOCU`
-   labels and the code breadcrumbs that pair with them. A label sits next to the
+   labels and the code backlinks that pair with them. A label sits next to the
    doc or code it judges; read both.
 2. **Classify each label** by the lesson it carries:
    - a **negative** judgement ("this is wrong, and why") → a smell;
@@ -84,7 +84,7 @@ Two findings from doing this matter enough to plan around:
   needs a `Context:` line naming where it lived and what that document is about.
 - **Separate genuine defects from context-starvation.** The smell catalog,
   voice pairs, and placement rules are consumed *alongside* `principles.md` and
-  `doc-standard.md`, so they may lean on shared vocabulary ("breadcrumb",
+  `doc-standard.md`, so they may lean on shared vocabulary ("backlink",
   "negative-space", "ADR"). A cold reader will flag those terms as unclear —
   that's an artifact of starving it, not a defect. Fixtures get no such
   allowance; they travel alone.

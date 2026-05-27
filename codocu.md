@@ -12,8 +12,9 @@ is the source of truth**; docs orient, they never drive runtime behavior.
   sibling subfolders so they're reachable at install time: `skills/codocu/references/`
   carries the design + corpus the agent loads at runtime;
   `skills/init/templates/` carries the files init drops into target repos.
-- `agents/` — plugin-level subagents (e.g. `codocu-reviewer`). Cross-reference
-  skill assets via the `skills/<name>/references/` path.
+- `agents/` — plugin-level subagents (`codocu-reviewer` for atomic per-doc
+  review; `proposal-reviewer` for grading a doc plan before it is written).
+  Cross-reference skill assets via the `skills/<name>/references/` path.
 - `.claude-plugin/plugin.json` — manifest; its `name` is the namespace prefix.
 
 **Evergreen docs — the orientation map**
@@ -21,7 +22,6 @@ is the source of truth**; docs orient, they never drive runtime behavior.
 - `skills/codocu/references/` — the authoritative aspect specs (loaded by
   `/codocu` at runtime, also the source of truth for contributors changing
   skill semantics): [`principles`](skills/codocu/references/principles.md),
-  [`voice`](skills/codocu/references/voice.md),
   [`doc-standard`](skills/codocu/references/doc-standard.md), plus the corpus
   (`placement-rules.md`, `voice-pairs.md`, `smell-catalog.md`).
 - `docs/design/` — deferred design notes not loaded at runtime (currently
@@ -62,7 +62,7 @@ Item description, 1-2 paragraphs, short
   evidence, not documentation); suites are numbered directories (`NNN-name`).
   See [`testing/README.md`](testing/README.md) for layout and how to run an eval.
 
-Note that even though skill files are considered "code" in this repo, we do not leave inline documentation in them (except required by claude), as it will create noise and confusion in consumer agents. No breadcrumbs, no pointers.
+Note that even though skill files are considered "code" in this repo, we do not leave inline documentation in them (except required by claude), as it will create noise and confusion in consumer agents. No backlinks, no pointers.
 
 ## Subagent guidelines
 

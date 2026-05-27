@@ -30,7 +30,8 @@ The template carries instructions for init in HTML comments of the form:
 <!-- codocu:init <instruction> -->
 ```
 
-Read every such comment in the template before showing the welcome. Each one is an instruction for init to act on — typically a question to roll into the welcome ("ask if this section should be included") or a default-handling note. Execute the instruction, then strip the comment from the final written file.
+Read every such comment in the template before showing the welcome. Each one is an instruction for init to act on — typically a question to roll into the welcome ("ask if this section should be included") or a default-handling note. Execute the instruction, then strip the comment from the final written file. Present choice dialog for optional sections. 
+
 Plain HTML comments (no `codocu:init` prefix) are normal template comments — leave them in the written file.
 
 ## The welcome
@@ -40,18 +41,14 @@ Before writing, describe the conventions in plain language — not the template'
 Cover, in roughly this order:
 
 - Where docs live (the `docs/` layout the template carries).
-- The tech-debt catchall and its entry format — frame it as the optional
-  section the user is being asked about (per the template's `codocu:init`
-  gate).
-- The breadcrumb marker the template picks as default, if the template
-  carries one.
+- Short descriptions and rationale for optional sections.
+- The backlink marker usage, if the template carries one.
 - How `/codocu:fold` will treat incomplete plans (per the template's fold
   settings).
 - That `codocu.md` will be wired into `CLAUDE.md` via `@codocu.md`.
 
-Fold every `codocu:init` question into this same welcome so the user makes one set of choices, not a sequence of prompts. End with: OK to proceed, or any corrections first?
-
-If the user names corrections — different folder names, a different breadcrumb form, drop a section, swap the tech-debt format — apply them to the in-memory template before writing. Don't bargain or ask follow-ups; take what they said and proceed.
+Ask for confirmation and/or any corrections. 
+If user asks for non-trivial explanations or principal reasoning, delegate to `/codocu:codocu` core skill.
 
 ## Already inited
 
@@ -59,15 +56,16 @@ If `codocu.md` already exists in the target repo, do not overwrite. Tell the use
 
 If `codocu.md` is missing but `CLAUDE.md` already contains `@codocu.md`, that's a stale import — write the templates and leave `CLAUDE.md` alone.
 
-If `docs/tech-debt.md` already exists, leave it alone — the user has started using it.
+If any other docs you intend to write already exist, ask user how to proceed with each (or with the whole batch if there are e.g. dozens of archived specs). Only handle trivial requests (overwrite, skip, delete). if user requests user requests require analyzing or editing the contents, offer partial basic init with further delegation to `/codocu:codocu`. 
 
 ## Orientation handoff
 
-Right after the writes land, offer one optional move: "Want a doc-system orientation pass? I can read the repo and suggest a few ways to cluster long-term docs under `docs/systems/` — by module, by system, by FE view/page, or something more complex depending on what's there."
+Right after the writes land, offer one optional move: "Want a doc-system orientation pass? I can read the repo and suggest how to proceed."
 
 If the user accepts, invoke `/codocu` with this prompt:
 
-> Orient around this repo and recommend how to cluster long-term docs under `docs/systems/`. Describe the codebase shape briefly (modules, FE pages, services, library, monorepo) and propose 1–2 clustering strategies with rationale. Inline only — no files written, no plan doc, no edits.
+```
+Orient around this repo and recommend how to proceed. If existing documentation exists, analyze and propose how it may fit into the proposed structure. If no structured documentation can be found, suggest initial documentation pass (or a bigger structured plan if codebase is large).
+```
 
-`/codocu` has the corpus and the Survey-doc-system primitive; it produces the suggestion. Init's job ends with the handoff. If the user declines, init ends after the writes.
-
+Init's job ends with the handoff. If the user declines, init ends after the writes.

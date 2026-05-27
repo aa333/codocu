@@ -1,6 +1,6 @@
 # Codocu
 
-**COde-as-a-DOCUmentation** — a Claude Code plugin that keeps a project's
+**COde-DOCUmentation** — a Claude Code plugin that keeps a project's
 documentation aligned with its code.
 
 **Core bet:** well-written code is already the most detailed spec a project
@@ -30,7 +30,7 @@ Three skills, composed by the agent per the user's ask:
 | `/codocu:init` | Scaffold `codocu.md` (the project's doc conventions file) and wire it into `CLAUDE.md` so every session loads it. Run once per project. |
 
 `codocu.md` is a free-form natural-language file at the project root. It
-defines where docs live, how breadcrumbs are written, and any project-specific
+defines where docs live, how backlinks are written, and any project-specific
 conventions. Edit it freely.
 
 ## Install & use

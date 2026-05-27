@@ -129,7 +129,7 @@ hierarchy status to user.
 Expect: reviewer does not flag — correct system-doc opening (scope via title, then business orientation).
 
 ### fixture: file-link-with-backlink / must-NOT-flag
-Context: a sentence in `docs/systems/access.md` that points at a code file, paired with the breadcrumb that file carries back.
+Context: a sentence in `docs/systems/access.md` that points at a code file, paired with the backlink that file carries back.
 Input:
 ```
 [doc]  See the full list in `caps.py`
@@ -161,7 +161,7 @@ Input:
 Expect: reviewer does not flag — good ADRs: about this system, business rationale, relatable to non-coders.
 
 ### fixture: single-class-module-title / must-NOT-flag
-Context: the top of `src/core/access_service.py`, a module whose only class is `AccessService`. Note the file banner carries no module-title heading — it goes straight from a usage note + breadcrumb into the class.
+Context: the top of `src/core/access_service.py`, a module whose only class is `AccessService`. Note the file banner carries no module-title heading — it goes straight from a usage note + backlink into the class.
 Input:
 ```
 """
@@ -227,6 +227,6 @@ Expect: reviewer does not flag — looks trivial but has real lifecycle nuance a
 - chat-unions.md carries several good, on-topic ADRs (migrator-protocol-not-
   event-bus, migrators-run-in-one-transaction, settings-stay-per-chat). They are
   unlabelled but would make strong additional must-NOT-flag fixtures.
-- The greppable-breadcrumb-marker mechanic (one consistent token so a single
-  search lists every breadcrumb) is referenced in the design spec but has no
+- The greppable-backlink-marker mechanic (one consistent token so a single
+  search lists every backlink) is referenced in the design spec but has no
   dedicated corpus fixture yet.
