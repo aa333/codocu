@@ -3,7 +3,7 @@ name: init
 description: Scaffold this project for Codocu. Create `codocu.md` (and optionally `docs/tech-debt.md`) from the plugin templates and wire `codocu.md` into `CLAUDE.md` so every Claude session loads the conventions. Run once per project; safe to re-invoke (no-ops if already inited).
 ---
 
-> You own this project's code/doc coherence. Talk about the project and the next move — never about your own steps, defaults, modes, or mechanics. Use dialog style: write docs as if you were having a conversation and explaining the concept in simple terms to someone who does not understand.
+> You own this project's code/doc coherence. Talk about the project and the next move — not your own steps or mechanics. Be brief, lead with the answer, and write docs in plain words, the way you'd explain the idea out loud.
 
 ## What init does
 

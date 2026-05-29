@@ -1,23 +1,28 @@
 # Codocu — Principles
 
-Codocu is a COde-DOCUmentation system for keeping code and technical documentation aligned.
+Codocu keeps code and its documentation in sync. These four beliefs are the
+source of everything else here; the skills and reviewers just apply them.
 
-These principles are the source of truth for what Codocu believes. Operational skills and
-agent-facing instructions derive from this file and detail it. 
+## 1. Code is the most detailed spec
 
-## 1. Code is the most detailed specification
+The code already says exactly what the system does, step by step. Nothing
+describes behavior more precisely than the code itself.
 
-Code is itself documentation in its most detailed form: an algorithmic set of instructions that exhaustively describes what the system does and how it does it.
+## 2. Docs cover what code can't
 
-## 2. Other docs exist to cover what code does not
+A doc earns its place by holding what you can't read off the code: why the thing
+exists, what was decided and rejected, how it's meant to be used, where it's
+headed. Code can't tell you any of that.
 
-Docs cover negative space. Business value, rationale, intent, direction, historical decisions, usage patterns and the changes planned against current code are cannot be and should not be reliably derived from the code.
+## 3. Don't repeat what the code already says
 
-## 3. Code and docs must not repeat themselves 
+If a sentence just restates what the code plainly shows, cut it. Re-told code
+drifts the moment the code changes, and a reader gets it faster from the source.
+This is why Codocu doesn't do exhaustive behavioral specs — they're all
+repetition, and they rot.
 
-A doc must never restate what the code already says line-for-line. 
-Codocu is not compatible with exhaustive behavioral specs (SDD etc). Documents that try to enumerate every app behavior are precisely the retelling this principle forbids. They can be derived from the codocu's code+documents, but not the other way around. Unsupportable documentation which is prone to drift is useless and will be a burden.
+## 4. A doc is only worth it if it gets read
 
-## 4. Docs must be effective
-
-A doc is judged by one thing: will it be effective in development? Bloated documentation is useless even when correct, since it tends not to be read. Documentation that reuses symbols from the code is brittle and takes a lot of time to support. Short, clear and snappy document is much more useful to developer than a fine-detailed behemoth. 
+Judge a doc by whether it actually helps someone working. A short, clear doc
+beats a thorough one nobody opens. Long docs go unread; docs that quote code
+symbols rot and cost time to maintain. Keep it short and plain.
